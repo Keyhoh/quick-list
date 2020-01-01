@@ -1,0 +1,24 @@
+{
+  "name": "quick-list",
+  "version": "0.1.0",
+  "description": "キーボード操作で完結するtodoリスト",
+  "engines": {
+    "node": ">=12.14.0",
+    "npm": ">=6.13.4"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Keyhoh/quick-list.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Keyhoh/quick-list/issues"
+  },
+  "homepage": "https://github.com/Keyhoh/quick-list#readme"
+}
