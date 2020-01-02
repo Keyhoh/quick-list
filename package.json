@@ -6,8 +6,9 @@
     "node": ">=12.14.0",
     "npm": ">=6.13.4"
   },
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
+    "dev:build": "webpack --mode=development",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,6 +24,9 @@
   "homepage": "https://github.com/Keyhoh/quick-list#readme",
   "devDependencies": {
     "@types/node": "^13.1.2",
-    "typescript": "^3.7.4"
+    "ts-loader": "^6.2.1",
+    "typescript": "^3.7.4",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
   }
 }
