@@ -1,4 +1,5 @@
 import TooLongNameError from "../Error/TooLongNameError";
+import EmptyNameError from "../Error/EmptyNameError";
 
 export default class Name {
     readonly value: string;
@@ -9,6 +10,9 @@ export default class Name {
     }
 
     private static validate(value: string): void {
-        if (value.length > 32) throw new TooLongNameError();
+        const length = value.length;
+        if (length == 0) throw new EmptyNameError();
+        // Googleの検索結果の表示が30字前後なので、これに合わせる。
+        if (length > 32) throw new TooLongNameError();
     }
 }
