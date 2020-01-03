@@ -1,5 +1,3 @@
-function helloWorld(): void {
-    console.log('Hello, world!');
+export function helloWorld(): String {
+    return 'Hello, world!';
 }
-
-helloWorld();
