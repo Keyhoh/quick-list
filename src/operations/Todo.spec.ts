@@ -14,7 +14,7 @@ test('It is able to give todo a name.', () => {
 });
 
 // Googleの検索結果の表示が30字前後なので、これに合わせる。
-test('The max length of todo-value is 32.', () => {
+test('The max length of todo-name is 32.', () => {
     const JUST_LENGTH_NAME = 'この文字列　は３２文字　丁度で構成　されていま　す。文字数　稼ぎ';
     expect(JUST_LENGTH_NAME).toHaveLength(32);
     expect(() => new Todo(JUST_LENGTH_NAME)).not.toThrow(Error);
