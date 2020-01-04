@@ -5,13 +5,13 @@ import EmptyNameError from "./Error/EmptyNameError";
 
 test('The value type of todo-id is UUID.', () => {
     const todo = new Todo('Todo name');
-    expect(UUID.test(todo.id.value)).toBeTruthy();
+    expect(UUID.test(todo.id)).toBeTruthy();
 });
 
 test('It is able to give todo a name.', () => {
     const TODO_NAME = 'Todo Name';
     expect(() => new Todo(TODO_NAME)).not.toThrow();
-    expect(new Todo(TODO_NAME).name.value).toEqual(TODO_NAME);
+    expect(new Todo(TODO_NAME).name).toEqual(TODO_NAME);
 });
 
 test('The max length of todo-name is 32.', () => {
@@ -30,4 +30,13 @@ test('The minimum length of todo-name is 1.', () => {
     const MINIMUM_NAME = 'あ';
     expect(MINIMUM_NAME).toHaveLength(1);
     expect(() => new Todo(MINIMUM_NAME)).not.toThrow();
+});
+
+test('It is able to update todo-name.', () => {
+    const INITIAL_NAME = 'Initial Name';
+    const todo = new Todo(INITIAL_NAME);
+    expect(todo.name).toBe(INITIAL_NAME);
+    const NEXT_NAME = 'Next Name';
+    todo.name = NEXT_NAME;
+    expect(todo.name).toBe(NEXT_NAME);
 });
