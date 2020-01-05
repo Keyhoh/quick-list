@@ -5,6 +5,7 @@ export default class Todo {
     private readonly _id: Id;
     private _name: Name;
     private _isChecked: boolean = false;
+    private _isDiscarded: boolean = false;
 
     public constructor(name: string) {
         this._id = new Id();
@@ -33,5 +34,17 @@ export default class Todo {
 
     public uncheck(): void {
         this._isChecked = false;
+    }
+
+    public get isDiscarded(): boolean {
+        return this._isDiscarded;
+    }
+
+    public discard(): void {
+        this._isDiscarded = true;
+    }
+
+    public pickUp(): void {
+        this._isDiscarded = false;
     }
 }

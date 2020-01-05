@@ -51,7 +51,7 @@ describe('Test for todo-check', (): void => {
         todo = new Todo('Todo Name');
     });
 
-    test('Todo is not checked at created.', (): void => {
+    test('Todo is not checked when created.', (): void => {
         expect(todo.isChecked).toBe(false);
     });
 
@@ -65,5 +65,28 @@ describe('Test for todo-check', (): void => {
         expect(todo.isChecked).toBe(true);
         expect((): void => todo.uncheck()).not.toThrow();
         expect(todo.isChecked).toBe(false);
+    });
+});
+
+describe('Test for todo-discard', (): void => {
+    let todo: Todo;
+    beforeEach((): void => {
+        todo = new Todo('Todo Name');
+    });
+
+    test('Todo is not discarded when created.', (): void => {
+        expect(todo.isDiscarded).toBe(false);
+    });
+
+    test('It is able to discard todo.', (): void => {
+        expect((): void => todo.discard()).not.toThrow();
+        expect(todo.isDiscarded).toBe(true);
+    });
+
+    test('It is able to pick up todo.', (): void => {
+        todo.discard();
+        expect(todo.isDiscarded).toBe(true);
+        expect((): void => todo.pickUp()).not.toThrow();
+        expect(todo.isDiscarded).toBe(false);
     });
 });
