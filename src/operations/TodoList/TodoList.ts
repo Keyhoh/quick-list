@@ -1,13 +1,13 @@
-import Id from "./Id";
+import Todo from "../Todo";
 
 export default class TodoList {
-    private readonly _id: Id;
+    private readonly _contents: Todo[];
 
-    constructor() {
-        this._id = new Id();
+    constructor(contents: Todo[]) {
+        this._contents = contents;
     }
 
-    get id(): string {
-        return this._id.value;
+    get contents(): Todo[] {
+        return this._contents;
     }
 }
