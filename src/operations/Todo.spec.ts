@@ -44,6 +44,15 @@ describe('Test for todo-name', (): void => {
         todo.name = NEXT_NAME;
         expect(todo.name).toBe(NEXT_NAME);
     });
+
+    test('It is not able to update todo-name by empty.', (): void => {
+        const TODO_NAME = 'Todo Name';
+        let todo = new Todo(TODO_NAME);
+        expect((): void => {
+            todo.name = '';
+        }).toThrow(EmptyNameError);
+        expect(todo.name).toBe(TODO_NAME);
+    });
 });
 
 describe('Test for todo-check', (): void => {
