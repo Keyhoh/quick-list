@@ -2,6 +2,7 @@ import Todo from "./Todo";
 import UUID from 'uuid-random';
 import TooLongNameError from "./Error/TooLongNameError";
 import EmptyNameError from "./Error/EmptyNameError";
+import CannotUpdateTodoError from "./Error/CannotUpdateTodoError";
 
 describe('Test for todo-id', (): void => {
     test('The value type of todo-id is UUID.', (): void => {
@@ -88,5 +89,27 @@ describe('Test for todo-discard', (): void => {
         expect(todo.isDiscarded).toBe(true);
         expect((): void => todo.pickUp()).not.toThrow();
         expect(todo.isDiscarded).toBe(false);
+    });
+});
+
+describe('Test for todo-status', (): void => {
+    let todo: Todo;
+    beforeEach((): void => {
+        todo = new Todo('Todo Name');
+    });
+
+    test('It is not able to check discarded todo.', (): void => {
+        todo.discard();
+        expect(todo.isChecked).toBe(false);
+        expect((): void => todo.check()).toThrow(CannotUpdateTodoError);
+        expect(todo.isChecked).toBe(false);
+    });
+
+    test('It is not able to uncheck discarded todo.', (): void => {
+        todo.check();
+        todo.discard();
+        expect(todo.isChecked).toBe(true);
+        expect((): void => todo.uncheck()).toThrow(CannotUpdateTodoError);
+        expect(todo.isChecked).toBe(true);
     });
 });
