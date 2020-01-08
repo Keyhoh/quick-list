@@ -22,6 +22,7 @@ export default class Todo {
     }
 
     public set name(name: string) {
+        if (this.isDiscarded) throw new CannotUpdateTodoError();
         this._name = new Name((name));
     }
 

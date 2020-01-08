@@ -94,8 +94,9 @@ describe('Test for todo-discard', (): void => {
 
 describe('Test for todo-status', (): void => {
     let todo: Todo;
+    const TODO_NAME = 'Todo Name';
     beforeEach((): void => {
-        todo = new Todo('Todo Name');
+        todo = new Todo(TODO_NAME);
     });
 
     test('It is not able to check discarded todo.', (): void => {
@@ -111,5 +112,14 @@ describe('Test for todo-status', (): void => {
         expect(todo.isChecked).toBe(true);
         expect((): void => todo.uncheck()).toThrow(CannotUpdateTodoError);
         expect(todo.isChecked).toBe(true);
+    });
+
+    test('It is not able to update todo-name if discarded.', (): void => {
+        todo.discard();
+        expect(todo.name).toBe(TODO_NAME);
+        expect((): void => {
+            todo.name = 'New Name';
+        }).toThrow(CannotUpdateTodoError);
+        expect(todo.name).toBe(TODO_NAME);
     });
 });
