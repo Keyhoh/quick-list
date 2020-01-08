@@ -1,5 +1,6 @@
 import Id from "./Id";
 import Name from "./Name";
+import CannotUpdateTodoError from "../Error/CannotUpdateTodoError";
 
 export default class Todo {
     private readonly _id: Id;
@@ -21,6 +22,7 @@ export default class Todo {
     }
 
     public set name(name: string) {
+        if (this.isDiscarded) throw new CannotUpdateTodoError();
         this._name = new Name((name));
     }
 
@@ -29,10 +31,12 @@ export default class Todo {
     }
 
     public check(): void {
+        if (this.isDiscarded) throw new CannotUpdateTodoError();
         this._isChecked = true;
     }
 
     public uncheck(): void {
+        if (this.isDiscarded) throw new CannotUpdateTodoError();
         this._isChecked = false;
     }
 
