@@ -14,3 +14,12 @@ describe('Test for todo-list-contents', (): void => {
         expect(new TodoList([]).contents).toEqual([]);
     });
 });
+
+describe('Test for select', (): void => {
+    test('The current-todo is the first todo in todo-list.', (): void => {
+        const LIST_OF_TODO: Todo[] = Array.from({length: 10}, (_, i: number): Todo => new Todo(`Todo-${i}`));
+        const todoList = new TodoList(LIST_OF_TODO);
+        expect(todoList.contents.length > 0).toBe(true);
+        expect(todoList.current).toBe(LIST_OF_TODO[0]);
+    });
+});
