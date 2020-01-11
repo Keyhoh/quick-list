@@ -1,4 +1,5 @@
 import Todo from "../Todo";
+import NoSuchTodoError from "../Error/NoSuchTodoError";
 
 export default class TodoList {
     private readonly _contents: Todo[];
@@ -14,6 +15,7 @@ export default class TodoList {
     }
 
     get current(): Todo {
+        if(this.contents.length === 0) throw new NoSuchTodoError();
         return this._contents[this._current];
     }
 }
