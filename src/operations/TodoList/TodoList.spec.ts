@@ -1,6 +1,6 @@
-import TodoList from "./TodoList";
-import Todo from "./Todo";
-import NoSuchContents from "./Error/NoSuchContents";
+import TodoList from "./index";
+import Todo from "../Todo";
+import NoSuchContents from "../Error/NoSuchContents";
 
 
 describe('Test for todo-list-contents', (): void => {
