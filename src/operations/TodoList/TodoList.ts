@@ -24,4 +24,10 @@ export default class TodoList {
         this._current++;
         return this.current;
     }
+
+    public previous(): Todo {
+        if (this._current <= 0) throw new NoSuchTodoError();
+        this._current--;
+        return this.current;
+    }
 }

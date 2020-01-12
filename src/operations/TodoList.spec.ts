@@ -18,34 +18,55 @@ describe('Test for todo-list-contents', (): void => {
 });
 
 describe('Test for focus', (): void => {
+    const getTodoArray = (length: number): Todo[] => {
+        return Array.from({length: Math.round(length)}, (_, i: number): Todo => new Todo(`Todo-${i}`));
+    };
+
     test('The current-todo is the first todo in todo-list.', (): void => {
-        const LIST_OF_TODO: Todo[] = Array.from({length: 10}, (_, i: number): Todo => new Todo(`Todo-${i}`));
+        const LIST_OF_TODO: Todo[] = getTodoArray(1);
         const todoList = new TodoList(LIST_OF_TODO);
-        expect(todoList.contents.length > 0).toBe(true);
         expect(todoList.current).toBe(LIST_OF_TODO[0]);
     });
 
     test('Throw error if todo-list-contents is empty.', (): void => {
         const todoList = new TodoList([]);
-        expect(todoList.contents.length).toBe(0);
         expect((): void => void todoList.current).toThrow(NoSuchTodoError);
     });
 
     test('It is able to get the next todo.', (): void => {
-        const LIST_OF_TODO: Todo[] = Array.from({length: 10}, (_, i: number): Todo => new Todo(`Todo-${i}`));
+        const LENGTH = 10;
+        const LIST_OF_TODO: Todo[] = getTodoArray(LENGTH);
         const todoList = new TodoList(LIST_OF_TODO);
-        expect(todoList.contents.length > 1).toBe(true);
-        expect(todoList.current).toBe(LIST_OF_TODO[0]);
-        expect(todoList.next()).toBe(LIST_OF_TODO[1]);
-        expect(todoList.current).toBe(LIST_OF_TODO[1]);
+        for (let i = 0; i < LENGTH - 1; i++) {
+            expect(todoList.current).toBe(LIST_OF_TODO[i]);
+            expect(todoList.next()).toBe(LIST_OF_TODO[i + 1]);
+            expect(todoList.current).toBe(LIST_OF_TODO[i + 1]);
+        }
     });
 
     test('Throw error if there is no next todo.', (): void => {
         const todo = new Todo('Todo Name');
         const todoList = new TodoList([todo]);
-        expect(todoList.contents.length).toBe(1);
         expect((): void => void todoList.next()).toThrow(NoSuchTodoError);
         expect((): void => void todoList.current).not.toThrow();
         expect(todoList.current).toBe(todo);
+    });
+
+    test('It is able to get the previous todo.', (): void => {
+        const LIST_OF_TODO: Todo[] = getTodoArray(10);
+        const todoList = new TodoList(LIST_OF_TODO);
+        expect(todoList.next()).toBe(LIST_OF_TODO[1]);
+        expect(todoList.previous()).toBe(LIST_OF_TODO[0]);
+        expect(todoList.current).toBe(LIST_OF_TODO[0]);
+    });
+
+    describe('Throw error if there is no previous todo.', (): void => {
+        test('Because there is no todo.', (): void => {
+            expect((): void => void new TodoList([]).previous()).toThrow(NoSuchTodoError);
+        });
+
+        test('Because current is the first todo.', (): void => {
+            expect((): void => void new TodoList([new Todo('Todo Name')]).previous()).toThrow(NoSuchTodoError);
+        });
     });
 });
