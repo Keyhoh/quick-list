@@ -1,13 +1,13 @@
 import Todo from "../Todo";
-import NoSuchTodoError from "../Error/NoSuchTodoError";
+import Cursor from "./Cursor";
 
 export default class TodoList {
     private readonly _contents: Todo[];
-    private _current: number;
+    private _cursor: Cursor;
 
     constructor(contents: Todo[]) {
         this._contents = contents;
-        this._current = contents.length > 0 ? 0 : -1;
+        this._cursor = new Cursor(contents);
     }
 
     get contents(): Todo[] {
@@ -15,19 +15,16 @@ export default class TodoList {
     }
 
     get current(): Todo {
-        if (this.contents.length === 0) throw new NoSuchTodoError();
-        return this._contents[this._current];
+        return this._contents[this._cursor.current];
     }
 
     public next(): Todo {
-        if (this.contents.length - this._current <= 1) throw new NoSuchTodoError();
-        this._current++;
+        this._cursor.go();
         return this.current;
     }
 
     public previous(): Todo {
-        if (this._current <= 0) throw new NoSuchTodoError();
-        this._current--;
+        this._cursor.back();
         return this.current;
     }
 }
