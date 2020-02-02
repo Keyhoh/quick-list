@@ -1,6 +1,6 @@
 import {createStore, combineReducers} from 'redux';
 
-import {Reducer, State} from "../TodoList/reducers";
+import {Reducer, State} from "../NormalMode/reducers";
 
 export type AppState = { state: State };
 

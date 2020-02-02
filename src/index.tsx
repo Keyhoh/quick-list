@@ -4,7 +4,7 @@ import {Provider} from "react-redux";
 
 import App from "./App";
 import store from "./App/Store";
-import {addTodo, removeTodo} from "./App/TodoList/actions";
+import {addTodo, removeTodo} from "./App/NormalMode/actions";
 
 const ROOT: HTMLElement | null = document.getElementById('root');
 
