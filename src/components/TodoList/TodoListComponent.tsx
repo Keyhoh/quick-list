@@ -4,7 +4,7 @@ import TodoComponent from "../Todo/TodoComponent";
 import Todo from "../../operations/Todo";
 import UUID from 'uuid-random';
 
-interface Props {
+export interface Props {
     todoList: TodoList;
 }
 
