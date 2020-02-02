@@ -1,7 +1,6 @@
 import TodoList from "./index";
 import Todo from "../Todo";
-import NoSuchContents from "../Error/NoSuchContents";
-
+import {NoSuchContentsError} from "../Error";
 
 describe('Test for todo-list-contents', (): void => {
     test('It is able to set todo-list the list of todo.', (): void => {
@@ -30,7 +29,7 @@ describe('Test for focus', (): void => {
 
     test('Throw error if todo-list-contents is empty.', (): void => {
         const todoList: TodoList = new TodoList([]);
-        expect((): void => void todoList.current).toThrow(NoSuchContents);
+        expect((): void => void todoList.current).toThrow(NoSuchContentsError);
     });
 
     test('It is able to get the next todo.', (): void => {
@@ -47,7 +46,7 @@ describe('Test for focus', (): void => {
     test('Throw error if there is no next todo.', (): void => {
         const todo: Todo = new Todo('Todo Name');
         const todoList: TodoList = new TodoList([todo]);
-        expect((): void => void todoList.next()).toThrow(NoSuchContents);
+        expect((): void => void todoList.next()).toThrow(NoSuchContentsError);
         expect((): void => void todoList.current).not.toThrow();
         expect(todoList.current).toBe(todo);
     });
@@ -68,11 +67,11 @@ describe('Test for focus', (): void => {
 
     describe('Throw error if there is no previous todo.', (): void => {
         test('Because there is no todo.', (): void => {
-            expect((): void => void new TodoList([]).previous()).toThrow(NoSuchContents);
+            expect((): void => void new TodoList([]).previous()).toThrow(NoSuchContentsError);
         });
 
         test('Because current is the first todo.', (): void => {
-            expect((): void => void new TodoList([new Todo('Todo Name')]).previous()).toThrow(NoSuchContents);
+            expect((): void => void new TodoList([new Todo('Todo Name')]).previous()).toThrow(NoSuchContentsError);
         });
     });
 });

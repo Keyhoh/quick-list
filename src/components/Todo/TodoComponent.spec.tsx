@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {act} from 'react-dom/test-utils';
 
-import TodoComponent from "./TodoComponent";
-import Todo from "../../operations/Todo";
+import {TodoComponent} from "./TodoComponent";
+import {Todo} from "../../contents";
 
 describe('Test for todo-component', (): void => {
     let container: HTMLElement;

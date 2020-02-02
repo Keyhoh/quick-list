@@ -1,5 +1,5 @@
 import {ADD_TODO, REMOVE_TODO, TodoActionTypes} from "./types";
-import Todo from "../../operations/Todo";
+import {Todo} from "../../contents";
 
 export interface State {
     list: Todo[],
@@ -7,7 +7,7 @@ export interface State {
 
 let initState: State = {list: []};
 
-export const Reducer =  (state: State = initState, action: TodoActionTypes): State => {
+export const Reducer = (state: State = initState, action: TodoActionTypes): State => {
     switch (action.type) {
         case ADD_TODO:
             return {

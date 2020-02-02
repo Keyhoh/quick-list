@@ -1,14 +1,14 @@
 import React from 'react';
-import TodoList from "../../operations/TodoList";
-import TodoComponent from "../Todo/TodoComponent";
-import Todo from "../../operations/Todo";
 import UUID from 'uuid-random';
+
+import {TodoList, Todo} from "../../contents";
+import {TodoComponent} from "../Todo";
 
 export interface Props {
     todoList: TodoList;
 }
 
-export default class TodoListComponent extends React.Component<Props> {
+export class TodoListComponent extends React.Component<Props> {
     constructor(props: Props) {
         super(props);
     }

@@ -1,3 +1,1 @@
-import TodoComponent from "./TodoComponent";
-
-export default TodoComponent;
+export {TodoComponent, Props} from "./TodoComponent";

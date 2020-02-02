@@ -1,4 +1,4 @@
-import NoSuchContents from "../Error/NoSuchContents";
+import {NoSuchContentsError} from "../Error";
 
 export default class Cursor {
     private _list: any[];
@@ -10,17 +10,17 @@ export default class Cursor {
     }
 
     get current(): number {
-        if (this._current < 0 || this._current >= this._list.length) throw  new NoSuchContents();
+        if (this._current < 0 || this._current >= this._list.length) throw  new NoSuchContentsError();
         return this._current;
     }
 
     go(): void {
-        if (this._list.length - this._current <= 1) throw new NoSuchContents();
+        if (this._list.length - this._current <= 1) throw new NoSuchContentsError();
         this._current++;
     }
 
     back(): void {
-        if (this._current <= 0) throw new NoSuchContents();
+        if (this._current <= 0) throw new NoSuchContentsError();
         this._current--;
     }
 }

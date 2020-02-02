@@ -1,8 +1,7 @@
-import Todo from "./index";
 import UUID from 'uuid-random';
-import TooLongNameError from "../Error/TooLongNameError";
-import EmptyNameError from "../Error/EmptyNameError";
-import CannotUpdateTodoError from "../Error/CannotUpdateTodoError";
+
+import Todo from "./Todo";
+import {CannotUpdateTodoError, EmptyNameError, TooLongNameError} from "../Error";
 
 describe('Test for todo-id', (): void => {
     test('The value type of todo-id is UUID.', (): void => {

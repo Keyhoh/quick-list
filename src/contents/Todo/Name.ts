@@ -1,5 +1,4 @@
-import TooLongNameError from "../Error/TooLongNameError";
-import EmptyNameError from "../Error/EmptyNameError";
+import {EmptyNameError, TooLongNameError} from "../Error";
 
 export default class Name {
     readonly value: string;

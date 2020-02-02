@@ -1,3 +1,1 @@
-import TodoListComponent from "./TodoListComponent";
-
-export default TodoListComponent;
+export {TodoListComponent, Props} from "./TodoListComponent";

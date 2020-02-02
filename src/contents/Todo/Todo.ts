@@ -1,6 +1,6 @@
 import Id from "./Id";
 import Name from "./Name";
-import CannotUpdateTodoError from "../Error/CannotUpdateTodoError";
+import {CannotUpdateTodoError} from "../Error";
 
 export default class Todo {
     private readonly _id: Id;

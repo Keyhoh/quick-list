@@ -2,9 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {act} from 'react-dom/test-utils';
 
-import TodoListComponent from "./TodoListComponent";
-import TodoList from "../../operations/TodoList";
-import Todo from "../../operations/Todo";
+import {TodoListComponent} from "./TodoListComponent";
+import {TodoList, Todo} from "../../contents";
 
 describe('Test for todo-list-component', (): void => {
     const getTodoList: Function = (length: number): TodoList => {

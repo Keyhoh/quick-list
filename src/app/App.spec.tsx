@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 
 import {act} from 'react-dom/test-utils';
-import App from "./index";
+import App from "./App";
 import store from "./Store";
 import {addTodo, removeTodo} from "./NormalMode/actions";
 

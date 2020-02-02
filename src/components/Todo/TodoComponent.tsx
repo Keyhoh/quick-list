@@ -1,11 +1,12 @@
 import React from 'react';
-import Todo from "../../operations/Todo";
+
+import {Todo} from "../../contents";
 
 export interface Props {
     todo: Todo;
 }
 
-export default class TodoComponent extends React.Component<Props> {
+export class TodoComponent extends React.Component<Props> {
     constructor(props: Props) {
         super(props);
     }
