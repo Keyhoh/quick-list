@@ -33,6 +33,7 @@
     "@types/react-test-renderer": "^16.9.2",
     "@types/redux": "^3.6.0",
     "css-loader": "^3.4.2",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.9.0",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",

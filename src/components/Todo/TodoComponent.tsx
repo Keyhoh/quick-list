@@ -6,7 +6,13 @@ import {Todo} from "../../contents";
 
 export interface Props {
     todo: Todo;
+    isFocused: boolean;
 }
+
+const getClassName = (props: Props): string => {
+    if (props.isFocused) return "todo focused";
+    return "todo";
+};
 
 export class TodoComponent extends React.Component<Props> {
     constructor(props: Props) {
@@ -14,6 +20,6 @@ export class TodoComponent extends React.Component<Props> {
     }
 
     render(): React.ReactElement {
-        return <div className={"todo"}>{this.props.todo.name}</div>;
+        return <div className={getClassName(this.props)}>{this.props.todo.name}</div>;
     }
 }

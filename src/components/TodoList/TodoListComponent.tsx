@@ -14,7 +14,12 @@ export class TodoListComponent extends React.Component<Props> {
     }
 
     mountTodoComponent(): JSX.Element[] {
-        return this.props.todoList.contents.map((todo: Todo) => <TodoComponent key={UUID()} todo={todo} />);
+        return this.props.todoList.contents.map((todo: Todo, i: number) =>
+            <TodoComponent
+                key={UUID()}
+                todo={todo}
+                isFocused={!!i}
+            />);
     }
 
     render(): React.ReactElement {

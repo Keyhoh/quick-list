@@ -15,7 +15,7 @@ describe('Test for todo-component', (): void => {
     test('Todo-component has todo-name.', (): void => {
         const TODO_NAME = 'Todo Name';
         const TODO: Todo = new Todo(TODO_NAME);
-        act((): void => void ReactDOM.render(<TodoComponent todo={TODO} />, container));
+        act((): void => void ReactDOM.render(<TodoComponent todo={TODO} isFocused={true} />, container));
         expect(container.textContent).toBe(TODO_NAME);
     });
 });
