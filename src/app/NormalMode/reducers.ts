@@ -5,7 +5,8 @@ export interface State {
     list: Todo[],
 }
 
-let initState: State = {list: []};
+const TODO_LIST: Todo[] = Array.from({length: 10}, (_, i: number) => new Todo(`Todo-${i}`));
+let initState: State = {list: TODO_LIST};
 
 export const Reducer = (state: State = initState, action: TodoActionTypes): State => {
     switch (action.type) {

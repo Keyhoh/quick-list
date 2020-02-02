@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 
+import "./style.scss";
+
 import {App, store} from "./app";
 import {addTodo, removeTodo} from "./app/NormalMode/actions";
 

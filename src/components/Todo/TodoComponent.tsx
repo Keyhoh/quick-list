@@ -1,5 +1,7 @@
 import React from 'react';
 
+import "./style.scss";
+
 import {Todo} from "../../contents";
 
 export interface Props {
@@ -12,6 +14,6 @@ export class TodoComponent extends React.Component<Props> {
     }
 
     render(): React.ReactElement {
-        return <div>{this.props.todo.name}</div>;
+        return <div className={"todo"}>{this.props.todo.name}</div>;
     }
 }
