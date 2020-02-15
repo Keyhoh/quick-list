@@ -3,8 +3,7 @@ import ReactDOM from 'react-dom';
 import {act} from 'react-dom/test-utils';
 
 import {TodoListComponent} from "./TodoListComponent";
-import {Todo} from "../../contents";
-import Cursor from "../../contents/Cursor/Cursor";
+import {Cursor, Todo} from "../../contents";
 
 describe('Test for todo-list-component', (): void => {
     const getTodoList: Function = (length: number): Todo[] => {

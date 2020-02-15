@@ -29,7 +29,7 @@ describe('Test for focus', (): void => {
         const todoList: Cursor<Todo> = new Cursor<Todo>(LIST_OF_TODO);
         for (let i = 0; i < LENGTH - 1; i++) {
             expect(todoList.current).toBe(LIST_OF_TODO[i]);
-            expect(todoList.go()).toBeUndefined();
+            expect(todoList.next()).toBeUndefined();
             expect(todoList.current).toBe(LIST_OF_TODO[i + 1]);
         }
     });
@@ -37,7 +37,7 @@ describe('Test for focus', (): void => {
     test('Throw error if there is no next todo.', (): void => {
         const todo: Todo = new Todo('Todo Name');
         const todoList: Cursor<Todo> = new Cursor<Todo>([todo]);
-        expect((): void => void todoList.go()).toThrow(NoSuchContentsError);
+        expect((): void => void todoList.next()).toThrow(NoSuchContentsError);
         expect((): void => void todoList.current).not.toThrow();
         expect(todoList.current).toBe(todo);
     });
@@ -47,22 +47,22 @@ describe('Test for focus', (): void => {
         const LIST_OF_TODO: Todo[] = getTodoArray(LENGTH);
         const todoList: Cursor<Todo> = new Cursor<Todo>(LIST_OF_TODO);
         for (let i = 0; i < LENGTH - 1; i++) {
-            todoList.go();
+            todoList.next();
         }
         for (let i = LENGTH - 1; i > 0; i--) {
             expect(todoList.current).toBe(LIST_OF_TODO[i]);
-            expect(todoList.back()).toBeUndefined();
+            expect(todoList.prev()).toBeUndefined();
             expect(todoList.current).toBe(LIST_OF_TODO[i - 1]);
         }
     });
 
     describe('Throw error if there is no previous todo.', (): void => {
         test('Because there is no todo.', (): void => {
-            expect((): void => void new Cursor<Todo>([]).back()).toThrow(NoSuchContentsError);
+            expect((): void => void new Cursor<Todo>([]).prev()).toThrow(NoSuchContentsError);
         });
 
         test('Because current is the first todo.', (): void => {
-            expect((): void => void new Cursor<Todo>([new Todo('Todo Name')]).back()).toThrow(NoSuchContentsError);
+            expect((): void => void new Cursor<Todo>([new Todo('Todo Name')]).prev()).toThrow(NoSuchContentsError);
         });
     });
 });

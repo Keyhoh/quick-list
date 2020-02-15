@@ -1,9 +1,8 @@
 import React from 'react';
 import UUID from 'uuid-random';
 
-import {Todo} from "../../contents";
+import {Cursor, Todo} from "../../contents";
 import {TodoComponent} from "../Todo";
-import Cursor from "../../contents/Cursor/Cursor";
 
 export interface Props {
     cursor: Cursor<Todo>,

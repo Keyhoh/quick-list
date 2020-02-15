@@ -18,12 +18,12 @@ export default class Cursor<T> {
         return this._list[this._current];
     }
 
-    go(): void {
+    next(): void {
         if (!this.hasContent(this._current + 1)) throw new NoSuchContentsError();
         this._current++;
     }
 
-    back(): void {
+    prev(): void {
         if (!this.hasContent(this._current - 1)) throw new NoSuchContentsError();
         this._current--;
     }
