@@ -6,8 +6,7 @@ import {TodoComponent} from "../Todo";
 import Cursor from "../../contents/Cursor/Cursor";
 
 export interface Props {
-    list: Todo[],
-    cursor: Cursor,
+    cursor: Cursor<Todo>,
 }
 
 export class TodoListComponent extends React.Component<Props> {
@@ -16,11 +15,11 @@ export class TodoListComponent extends React.Component<Props> {
     }
 
     mountTodoComponent(): JSX.Element[] {
-        return this.props.list.map((todo: Todo, i: number) =>
+        return this.props.cursor.all.map((todo: Todo) =>
             <TodoComponent
                 key={UUID()}
                 todo={todo}
-                isFocused={this.props.cursor.current == i}
+                isFocused={todo === this.props.cursor.current}
             />);
     }
 

@@ -19,7 +19,7 @@ describe('Test for todo-list-component', (): void => {
 
     test('Todo-list-component has todo-components corresponding to todo.', (): void => {
         const list: Todo[] = getTodoList(10);
-        act((): void => void ReactDOM.render(<TodoListComponent list={list} cursor={new Cursor(list)} />, container));
+        act((): void => void ReactDOM.render(<TodoListComponent cursor={new Cursor(list)} />, container));
         const TODO_LIST_COMPONENT: ChildNode | null = container.firstChild;
 
         if (TODO_LIST_COMPONENT === null) throw new Error('Test failed.');

@@ -1,17 +1,21 @@
 import {NoSuchContentsError} from "../Error";
 
-export default class Cursor {
-    private _list: any[];
+export default class Cursor<T> {
+    private readonly _list: T[];
     private _current: number;
 
-    constructor(list: any[]) {
+    constructor(list: T[]) {
         this._list = list;
         this._current = list.length > 0 ? 0 : -1;
     }
 
-    get current(): number {
+    get all(): T[] {
+        return [...this._list];
+    }
+
+    get current(): T {
         if (this._current < 0 || this._current >= this._list.length) throw  new NoSuchContentsError();
-        return this._current;
+        return this._list[this._current];
     }
 
     go(): void {
