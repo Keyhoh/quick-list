@@ -15,12 +15,16 @@ export default class Cursor {
     }
 
     go(): void {
-        if (this._list.length - this._current <= 1) throw new NoSuchContentsError();
+        if (!this.hasContent(this._current + 1)) throw new NoSuchContentsError();
         this._current++;
     }
 
     back(): void {
-        if (this._current <= 0) throw new NoSuchContentsError();
+        if (!this.hasContent(this._current - 1)) throw new NoSuchContentsError();
         this._current--;
+    }
+
+    private hasContent(point: number): boolean {
+        return point >= 0 && point < this._list.length;
     }
 }

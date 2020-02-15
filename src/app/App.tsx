@@ -1,11 +1,12 @@
 import {connect} from 'react-redux';
 
 import {AppComponent, AppProps} from "../components";
-import {TodoList} from "../contents";
 import {AppState} from "./Store";
+import {Cursor} from "../contents";
 
 const mapStateToProps = ({state}: AppState): AppProps => {
-    return {todoList: new TodoList(state.list)};
+    let list = [...state.list];
+    return {list: list, cursor: new Cursor(list)};
 };
 
 export default connect(mapStateToProps)(AppComponent);
