@@ -16,7 +16,7 @@ describe('Test for focus', (): void => {
 
     test('It is able to get all list.', (): void => {
         const LIST_OF_TODO: Todo[] = getTodoArray(10);
-        expect(Cursor.of<Todo>(LIST_OF_TODO).all).toEqual(LIST_OF_TODO);
+        expect(Cursor.of<Todo>(LIST_OF_TODO).contents).toEqual(LIST_OF_TODO);
     });
 
     test('Throw error if todo-list-contents is empty.', (): void => {
@@ -76,7 +76,7 @@ describe('Test for focus', (): void => {
             for (let i = 0; i < LENGTH; i++) {
                 const CURSOR_JSON: CursorJSON<Todo> = cursor.toJSON();
                 expect(CURSOR_JSON.current).toEqual(cursor.current);
-                expect(CURSOR_JSON.list).toEqual(cursor.all);
+                expect(CURSOR_JSON.contents).toEqual(cursor.contents);
                 if (i < LENGTH - 1) cursor.next();
             }
         });
@@ -86,8 +86,8 @@ describe('Test for focus', (): void => {
             const LIST_OF_TODO = getTodoArray(LENGTH);
 
             for (let i = 0; i < LENGTH; i++) {
-                let cursor: Cursor<Todo> = Cursor.fromJSON<Todo>({list: LIST_OF_TODO, current: i});
-                expect(cursor.all).toEqual(LIST_OF_TODO);
+                let cursor: Cursor<Todo> = Cursor.fromJSON<Todo>({contents: LIST_OF_TODO, current: i});
+                expect(cursor.contents).toEqual(LIST_OF_TODO);
                 expect(cursor.current).toEqual(i);
             }
         });
@@ -96,7 +96,7 @@ describe('Test for focus', (): void => {
             const LENGTH: number = 10;
             const LIST_OF_TODO = getTodoArray(LENGTH);
             expect((): void => void Cursor.fromJSON<Todo>({
-                list: LIST_OF_TODO,
+                contents: LIST_OF_TODO,
                 current: NaN,
             })).toThrow(NoSuchContentsError);
         });

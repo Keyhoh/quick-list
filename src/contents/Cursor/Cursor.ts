@@ -1,31 +1,31 @@
 import {NoSuchContentsError} from "../Error";
 
 export interface CursorJSON<T> {
-    list: T[],
+    contents: T[],
     current: number,
 }
 
 export default class Cursor<T> {
-    private readonly _list: T[];
+    private readonly _contents: T[];
     private _current: number;
 
-    private constructor(list: T[], current: number = 0) {
+    private constructor(contents: T[], current: number = 0) {
         if (isNaN(current)) throw new NoSuchContentsError();
-        this._list = list;
-        if (list.length === 0) {
+        this._contents = contents;
+        if (contents.length === 0) {
             this._current = -1;
         } else {
-            this._current = [0, current, list.length - 1].sort((a: number, b: number): number => a - b)[1];
+            this._current = [0, current, contents.length - 1].sort((a: number, b: number): number => a - b)[1];
         }
     }
 
     get current(): number {
-        if (this._current < 0 || this._current >= this._list.length) throw  new NoSuchContentsError();
+        if (this._current < 0 || this._current >= this._contents.length) throw  new NoSuchContentsError();
         return this._current;
     }
 
-    get all(): T[] {
-        return [...this._list];
+    get contents(): T[] {
+        return [...this._contents];
     }
 
     public static of<T>(list: T[]): Cursor<T> {
@@ -33,7 +33,7 @@ export default class Cursor<T> {
     }
 
     static fromJSON<T>(json: CursorJSON<T>): Cursor<T> {
-        return new Cursor<T>(json.list, json.current);
+        return new Cursor<T>(json.contents, json.current);
     }
 
     next(): void {
@@ -46,18 +46,18 @@ export default class Cursor<T> {
         this._current--;
     }
 
-    private hasContent(point: number): boolean {
-        return point >= 0 && point < this._list.length;
-    }
-
     update(list: T[]): Cursor<T> {
-        return Cursor.fromJSON<T>({list: list, current: this._current});
+        return Cursor.fromJSON<T>({contents: list, current: this._current});
     }
 
     toJSON(): CursorJSON<T> {
         return {
-            list: this._list,
+            contents: this._contents,
             current: this._current,
         };
+    }
+
+    private hasContent(point: number): boolean {
+        return point >= 0 && point < this._contents.length;
     }
 }
