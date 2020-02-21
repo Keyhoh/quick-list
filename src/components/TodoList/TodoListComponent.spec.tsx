@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {act} from 'react-dom/test-utils';
 
 import {TodoListComponent} from "./TodoListComponent";
-import {Cursor, Todo} from "../../contents";
+import {Todo} from "../../contents";
 
 describe('Test for todo-list-component', (): void => {
     const getTodoList: Function = (length: number): Todo[] => {
@@ -18,7 +18,7 @@ describe('Test for todo-list-component', (): void => {
 
     test('Todo-list-component has todo-components corresponding to todo.', (): void => {
         const list: Todo[] = getTodoList(10);
-        act((): void => void ReactDOM.render(<TodoListComponent cursor={new Cursor(list)} />, container));
+        act((): void => void ReactDOM.render(<TodoListComponent list={list} current={0} />, container));
         const TODO_LIST_COMPONENT: ChildNode | null = container.firstChild;
 
         if (TODO_LIST_COMPONENT === null) throw new Error('Test failed.');
