@@ -5,8 +5,8 @@ import {Provider} from 'react-redux';
 import "./style.scss";
 
 import {App, store} from "./app";
-import {addTodo, removeTodo} from "./app/Operation";
-import {down, up} from "./app/Move";
+import {addTodo, removeTodo} from "./app/Operation/Manufacture";
+import {down, up} from "./app/Operation/Move";
 
 const ROOT: HTMLElement | null = document.getElementById('root');
 

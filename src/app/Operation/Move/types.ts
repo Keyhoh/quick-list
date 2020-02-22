@@ -1,4 +1,4 @@
-import {IAction, KIND} from "../Action";
+import {IAction, KIND} from "../../Action";
 
 export const UP: string = 'UP';
 export const DOWN: string = 'DOWN';

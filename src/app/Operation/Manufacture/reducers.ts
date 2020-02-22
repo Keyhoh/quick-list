@@ -1,7 +1,7 @@
-import {ADD_TODO, OperationActionTypes, REMOVE_TODO} from "./types";
-import {Cursor, Todo} from "../../contents";
+import {ADD_TODO, ManufactureActionTypes, REMOVE_TODO} from "./types";
+import {Cursor, Todo} from "../../../contents";
 
-export const OperationReducer = (cursor: Cursor<Todo>, action: OperationActionTypes): Cursor<Todo> => {
+export const ManufactureReducer = (cursor: Cursor<Todo>, action: ManufactureActionTypes): Cursor<Todo> => {
     switch (action.type) {
         case ADD_TODO:
             let contents: Todo[] = [...cursor.contents, new Todo(action.payload)];

@@ -4,9 +4,9 @@ import {Provider} from 'react-redux';
 
 import {act} from 'react-dom/test-utils';
 
-import App from "./App";
-import store from "./Store";
-import {addTodo, removeTodo} from "./Operation";
+import App from "../App";
+import store from "../Store";
+import {addTodo, removeTodo} from "../Operation/Manufacture";
 
 describe('Test for App', (): void => {
     let container: HTMLElement = document.createElement('div');

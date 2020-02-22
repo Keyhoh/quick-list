@@ -1,8 +1,8 @@
 import {InitState, State} from "../State";
 import {IAction, KIND} from "../Action";
-import {OperationActionTypes, OperationReducer} from "../Operation";
+import {ManufactureActionTypes, ManufactureReducer} from "../Operation/Manufacture";
 import {Cursor, Todo} from "../../contents";
-import {MoveActionTypes, MoveReducer} from "../Move";
+import {MoveActionTypes, MoveReducer} from "../Operation/Move";
 
 export default function (state: State = InitState, action: IAction): State {
     let cursor = Cursor.fromJSON<Todo>(state);

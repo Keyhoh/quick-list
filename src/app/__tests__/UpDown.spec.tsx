@@ -4,10 +4,10 @@ import {Provider} from 'react-redux';
 
 import {act} from 'react-dom/test-utils';
 
-import App from "./App";
-import store from "./Store";
-import {addTodo} from "./Operation";
-import {down, up} from "./Move";
+import App from "../App";
+import store from "../Store";
+import {addTodo} from "../Operation/Manufacture";
+import {down, up} from "../Operation/Move";
 
 describe('Test for App', (): void => {
     let container: HTMLElement = document.createElement('div');

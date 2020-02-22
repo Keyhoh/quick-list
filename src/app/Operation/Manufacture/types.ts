@@ -1,4 +1,4 @@
-import {IAction, KIND} from "../Action";
+import {IAction, KIND} from "../../Action";
 
 export const ADD_TODO = 'ADD_TODO';
 export const REMOVE_TODO = 'REMOVE_TODO';
@@ -16,4 +16,4 @@ interface RemoveTodoAction extends IBaseAction<typeof REMOVE_TODO> {
     type: typeof REMOVE_TODO,
 }
 
-export type OperationActionTypes = AddTodoAction | RemoveTodoAction;
+export type ManufactureActionTypes = AddTodoAction | RemoveTodoAction;
