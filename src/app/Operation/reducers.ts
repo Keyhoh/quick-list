@@ -9,4 +9,5 @@ export const OperationReducer = (cursor: Cursor<Todo>, action: OperationActionTy
         case REMOVE_TODO:
             return Cursor.of<Todo>([]);
     }
+    return cursor;
 };

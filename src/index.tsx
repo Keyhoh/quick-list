@@ -6,6 +6,7 @@ import "./style.scss";
 
 import {App, store} from "./app";
 import {addTodo, removeTodo} from "./app/Operation";
+import {down, up} from "./app/Move";
 
 const ROOT: HTMLElement | null = document.getElementById('root');
 
@@ -18,6 +19,12 @@ if (ROOT != null) {
                 break;
             case 'D':
                 store.dispatch(removeTodo());
+                break;
+            case 'j':
+                store.dispatch(down());
+                break;
+            case 'k':
+                store.dispatch(up());
                 break;
         }
     });

@@ -1,6 +1,7 @@
 import {Action} from 'redux';
 
 export enum KIND {
+    MOVE,
     OPERATION,
 }
 
