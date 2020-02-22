@@ -8,47 +8,47 @@ export default class Todo {
     private _isChecked: boolean = false;
     private _isDiscarded: boolean = false;
 
-    public constructor(name: string) {
+    constructor(name: string) {
         this._id = new Id();
         this._name = new Name(name);
     }
 
-    public get id(): string {
+    get id(): string {
         return this._id.value;
     }
 
-    public get name(): string {
+    get name(): string {
         return this._name.value;
     }
 
-    public set name(name: string) {
+    set name(name: string) {
         if (this.isDiscarded) throw new CannotUpdateTodoError();
         this._name = new Name((name));
     }
 
-    public get isChecked(): boolean {
+    get isChecked(): boolean {
         return this._isChecked;
     }
 
-    public check(): void {
+    get isDiscarded(): boolean {
+        return this._isDiscarded;
+    }
+
+    check(): void {
         if (this.isDiscarded) throw new CannotUpdateTodoError();
         this._isChecked = true;
     }
 
-    public uncheck(): void {
+    uncheck(): void {
         if (this.isDiscarded) throw new CannotUpdateTodoError();
         this._isChecked = false;
     }
 
-    public get isDiscarded(): boolean {
-        return this._isDiscarded;
-    }
-
-    public discard(): void {
+    discard(): void {
         this._isDiscarded = true;
     }
 
-    public pickUp(): void {
+    pickUp(): void {
         this._isDiscarded = false;
     }
 }

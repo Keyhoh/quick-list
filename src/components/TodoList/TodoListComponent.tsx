@@ -1,11 +1,12 @@
 import React from 'react';
 import UUID from 'uuid-random';
 
-import {TodoList, Todo} from "../../contents";
+import {Todo} from "../../contents";
 import {TodoComponent} from "../Todo";
 
 export interface Props {
-    todoList: TodoList;
+    contents: Todo[],
+    current: number,
 }
 
 export class TodoListComponent extends React.Component<Props> {
@@ -14,7 +15,12 @@ export class TodoListComponent extends React.Component<Props> {
     }
 
     mountTodoComponent(): JSX.Element[] {
-        return this.props.todoList.contents.map((todo: Todo) => <TodoComponent key={UUID()} todo={todo} />);
+        return this.props.contents.map((todo: Todo, i: number) =>
+            <TodoComponent
+                key={UUID()}
+                todo={todo}
+                isFocused={i === this.props.current}
+            />);
     }
 
     render(): React.ReactElement {

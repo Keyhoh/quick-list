@@ -3,12 +3,11 @@ import ReactDOM from 'react-dom';
 import {act} from 'react-dom/test-utils';
 
 import {TodoListComponent} from "./TodoListComponent";
-import {TodoList, Todo} from "../../contents";
+import {Todo} from "../../contents";
 
 describe('Test for todo-list-component', (): void => {
-    const getTodoList: Function = (length: number): TodoList => {
-        const todoArray: Todo[] = Array.from({length: Math.round(length)}, (_, i: number): Todo => new Todo(`Todo-${i}`));
-        return new TodoList(todoArray);
+    const getTodoList: Function = (length: number): Todo[] => {
+        return Array.from({length: Math.round(length)}, (_, i: number): Todo => new Todo(`Todo-${i}`));
     };
 
     let container: HTMLElement;
@@ -18,15 +17,15 @@ describe('Test for todo-list-component', (): void => {
     });
 
     test('Todo-list-component has todo-components corresponding to todo.', (): void => {
-        const TODO_LIST: TodoList = getTodoList(10);
-        act((): void => void ReactDOM.render(<TodoListComponent todoList={TODO_LIST} />, container));
+        const list: Todo[] = getTodoList(10);
+        act((): void => void ReactDOM.render(<TodoListComponent contents={list} current={0} />, container));
         const TODO_LIST_COMPONENT: ChildNode | null = container.firstChild;
 
         if (TODO_LIST_COMPONENT === null) throw new Error('Test failed.');
 
-        expect(TODO_LIST_COMPONENT.childNodes.length).toBe(TODO_LIST.contents.length);
+        expect(TODO_LIST_COMPONENT.childNodes.length).toBe(list.length);
         TODO_LIST_COMPONENT.childNodes.forEach((todoComponent: ChildNode, i: number) => {
-            expect(todoComponent.textContent).toBe(TODO_LIST.contents[i].name);
+            expect(todoComponent.textContent).toBe(list[i].name);
         });
     });
 });
