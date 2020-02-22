@@ -9,9 +9,9 @@ export default function (state: State = InitState, action: IAction): State {
 
     switch (action.kind) {
         case KIND.MOVE:
-            return MoveReducer(cursor, action as MoveActionTypes).toJSON();
+            return {...state, ...MoveReducer(cursor, action as MoveActionTypes).toJSON()};
         case KIND.OPERATION:
-            return OperationReducer(cursor, action as OperationActionTypes).toJSON();
+            return {...state, ...ManufactureReducer(cursor, action as ManufactureActionTypes).toJSON()};
     }
     return InitState;
 };
