@@ -8,7 +8,7 @@ export default function (state: State = InitState, action: IAction): State {
 
     switch (action.kind) {
         case KIND.OPERATION:
-            return OperationReducer(cursor, action as OperationActionTypes);
+            return OperationReducer(cursor, action as OperationActionTypes).toJSON();
     }
     return InitState;
 };
