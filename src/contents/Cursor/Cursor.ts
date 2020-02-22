@@ -28,8 +28,8 @@ export default class Cursor<T> {
         return [...this._contents];
     }
 
-    public static of<T>(list: T[]): Cursor<T> {
-        return new Cursor<T>(list);
+    public static of<T>(contents: T[]): Cursor<T> {
+        return new Cursor<T>(contents);
     }
 
     static fromJSON<T>(json: CursorJSON<T>): Cursor<T> {

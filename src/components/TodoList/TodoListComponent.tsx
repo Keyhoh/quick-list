@@ -5,7 +5,7 @@ import {Todo} from "../../contents";
 import {TodoComponent} from "../Todo";
 
 export interface Props {
-    list: Todo[],
+    contents: Todo[],
     current: number,
 }
 
@@ -15,7 +15,7 @@ export class TodoListComponent extends React.Component<Props> {
     }
 
     mountTodoComponent(): JSX.Element[] {
-        return this.props.list.map((todo: Todo, i: number) =>
+        return this.props.contents.map((todo: Todo, i: number) =>
             <TodoComponent
                 key={UUID()}
                 todo={todo}
