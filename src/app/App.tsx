@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 
 import {AppComponent, AppProps} from "../components";
-import {AppState} from "./Store";
+import {State} from "./State";
 
-const mapStateToProps = ({state}: AppState): AppProps => {
+const mapStateToProps = (state: State): AppProps => {
     return state;
 };
 

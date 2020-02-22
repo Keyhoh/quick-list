@@ -1,5 +1,5 @@
 import {DOWN, MoveActionTypes, UP} from "./types";
-import {KIND} from "../Action";
+import {KIND} from "../../Action";
 
 export function up(): MoveActionTypes {
     return {
