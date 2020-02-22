@@ -1,5 +1,5 @@
 import {Cursor, Todo} from "../../contents";
-import Mode from "../Mode";
+import Mode from "../../mode";
 
 export interface State {
     mode: Mode,
