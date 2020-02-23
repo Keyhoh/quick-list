@@ -33,10 +33,14 @@ if (ROOT != null) {
                     case 'k':
                         store.dispatch(up());
                         break;
+                    default:
+                        return;
                 }
+                e.preventDefault();
                 break;
+
             case Mode.INSERT:
-                if (e.ctrlKey && e.key === '[') store.dispatch(changeMode(Mode.NORMAL));
+                if (e.ctrlKey && e.key === '[' || e.key === 'Escape') store.dispatch(changeMode(Mode.NORMAL));
                 break;
         }
     });
