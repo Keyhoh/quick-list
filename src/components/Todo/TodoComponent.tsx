@@ -14,8 +14,6 @@ export interface Props {
 }
 
 export class TodoComponent extends React.Component<Props> {
-    private input: HTMLInputElement | null = null;
-
     constructor(props: Props) {
         super(props);
     }
@@ -31,10 +29,6 @@ export class TodoComponent extends React.Component<Props> {
         } else {
             return <ParagraphComponent value={this.props.todo.name} />
         }
-    }
-
-    componentDidMount(): void {
-        if (this.input != null) this.input.focus();
     }
 
     render(): React.ReactElement {
