@@ -1,6 +1,6 @@
 import {ModeActionTypes} from "./types";
-import Mode from "../../../mode";
+import {State} from "../../State";
 
-export const ModeReducer = (action: ModeActionTypes): { mode: Mode } => {
-    return {mode: action.payload};
+export const ModeReducer = (state: State, action: ModeActionTypes): State => {
+    return {...state, mode: action.payload};
 };
