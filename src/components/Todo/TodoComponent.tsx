@@ -4,6 +4,8 @@ import "./style.scss";
 
 import {Todo} from "../../contents";
 import Mode from "../../mode";
+import ParagraphComponent from "./ParagraphComponent";
+import InputComponent from "./InputComponent";
 
 export interface Props {
     mode: Mode,
@@ -11,20 +13,31 @@ export interface Props {
     isFocused: boolean,
 }
 
-const getClassName = (props: Props): string => {
-    if (props.isFocused) return "todo focused";
-    return "todo";
-};
-
 export class TodoComponent extends React.Component<Props> {
+    private input: HTMLInputElement | null = null;
+
     constructor(props: Props) {
         super(props);
     }
 
-    render(): React.ReactElement {
+    private get className(): string {
+        if (this.props.isFocused) return "todo focused";
+        return "todo";
+    }
+
+    private get row(): React.ReactElement {
         if (this.props.isFocused && this.props.mode === Mode.INSERT) {
-            return <input className={getClassName(this.props)} />;
+            return <InputComponent value={this.props.todo.name} />
+        } else {
+            return <ParagraphComponent value={this.props.todo.name} />
         }
-        return <div className={getClassName(this.props)}>{this.props.todo.name}</div>;
+    }
+
+    componentDidMount(): void {
+        if (this.input != null) this.input.focus();
+    }
+
+    render(): React.ReactElement {
+        return <div className={this.className}>{this.row}</div>
     }
 }

@@ -1,47 +1,39 @@
 @import "../../theme";
 
 .todo {
-  color: $font-base;
   height: 24px;
-  font-size: 16px;
   pointer-events: none;
-  &.checked{
+  color: $font-base;
+  font-size: 16px;
+
+  &.checked {
     text-decoration: line-through solid $font-base;
-    font-weight: lighter ;
+    font-weight: lighter;
   }
+
   &.focused {
     background-color: $emphasis;
   }
+
   &.selected {
     color: $font-emphasis;
     font-weight: bolder;
   }
-  &:not(.entering) {
-    > p {
-      display: inline;
-    }
-    > input {
-      display: none;
-    }
+
+  > p {
+    margin: 0;
   }
-  &.entering {
-    > p {
-      display: none;
-    }
-    > input {
-      display: inline;
-    }
-  }
+
   > input {
+    width: 100%;
+    border: none;
     padding-top: 0;
     padding-bottom: 0;
-    width: 100%;
+    outline: none;
+    background-color: inherit;
     color: inherit;
     font-size: inherit;
     font-family: inherit;
     font-weight: inherit;
-    background-color: inherit;
-    border: none;
-    outline: none;
   }
 }
