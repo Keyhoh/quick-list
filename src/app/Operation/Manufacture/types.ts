@@ -1,10 +1,10 @@
-import {IAction, KIND} from "../../Action";
+import {IAction, Kind} from "../../Action";
 
 export const ADD_TODO = 'ADD_TODO';
 export const REMOVE_TODO = 'REMOVE_TODO';
 
 interface IBaseAction<T> extends IAction<T> {
-    kind: KIND.MANUFACTURE,
+    kind: Kind.MANUFACTURE,
 }
 
 interface AddTodoAction extends IBaseAction<typeof ADD_TODO> {

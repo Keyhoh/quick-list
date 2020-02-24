@@ -3,7 +3,7 @@ import {ADD_INSERT, addInsert, CHANGE_MODE, changeMode, Direction} from "./index
 
 import configureStore, {MockStoreCreator, MockStoreEnhanced} from 'redux-mock-store';
 import {InitState, State} from "../../State";
-import {KIND} from "../../Action";
+import {Kind} from "../../Action";
 
 const mockStore: MockStoreCreator<State> = configureStore<State>([]);
 
@@ -16,8 +16,8 @@ describe('Change mode test', (): void => {
         store.dispatch(changeMode(Mode.INSERT));
         store.dispatch(changeMode(Mode.NORMAL));
         expect(store.getActions()).toEqual([
-            {kind: KIND.MODE, type: CHANGE_MODE, payload: Mode.INSERT},
-            {kind: KIND.MODE, type: CHANGE_MODE, payload: Mode.NORMAL}
+            {kind: Kind.MODE, type: CHANGE_MODE, payload: Mode.INSERT},
+            {kind: Kind.MODE, type: CHANGE_MODE, payload: Mode.NORMAL}
         ]);
     });
 
@@ -25,8 +25,8 @@ describe('Change mode test', (): void => {
         store.dispatch(addInsert(Direction.Below));
         store.dispatch(addInsert(Direction.Above));
         expect(store.getActions()).toEqual([
-            {kind: KIND.MODE, type: ADD_INSERT, payload: Direction.Below},
-            {kind: KIND.MODE, type: ADD_INSERT, payload: Direction.Above}
+            {kind: Kind.MODE, type: ADD_INSERT, payload: Direction.Below},
+            {kind: Kind.MODE, type: ADD_INSERT, payload: Direction.Above}
         ]);
     });
 });

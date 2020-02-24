@@ -1,4 +1,4 @@
-import {IAction, KIND} from "../../Action";
+import {IAction, Kind} from "../../Action";
 import Mode from "../../../mode";
 
 export const CHANGE_MODE = 'CHANGE_MODE';
@@ -10,7 +10,7 @@ export enum Direction {
 }
 
 interface IBaseAction<T> extends IAction<T> {
-    kind: KIND.MODE,
+    kind: Kind.MODE,
 }
 
 interface ModeAction extends IBaseAction<typeof CHANGE_MODE> {

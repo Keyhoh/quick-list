@@ -1,9 +1,9 @@
 import {ADD_TODO, ManufactureActionTypes, REMOVE_TODO} from "./types";
-import {KIND} from "../../Action";
+import {Kind} from "../../Action";
 
 export function addTodo(s: string): ManufactureActionTypes {
     return {
-        kind: KIND.MANUFACTURE,
+        kind: Kind.MANUFACTURE,
         type: ADD_TODO,
         payload: s,
     }
@@ -11,7 +11,7 @@ export function addTodo(s: string): ManufactureActionTypes {
 
 export function removeTodo(): ManufactureActionTypes {
     return {
-        kind: KIND.MANUFACTURE,
+        kind: Kind.MANUFACTURE,
         type: REMOVE_TODO,
     }
 }

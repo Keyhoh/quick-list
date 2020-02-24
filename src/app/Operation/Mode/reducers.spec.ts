@@ -1,14 +1,14 @@
 import Mode from "../../../mode";
 import {ModeReducer} from "./reducers";
 import {InitState, State} from "../../State";
-import {KIND} from "../../Action";
+import {Kind} from "../../Action";
 import {ADD_INSERT, CHANGE_MODE, Direction} from "./types";
 import {Todo} from "../../../contents";
 import {getTodoList} from "../../../__tests__/util";
 
 describe('ModeReducer test', (): void => {
     test('ModeReducer changes mode.', (): void => {
-        expect(ModeReducer(InitState, {kind: KIND.MODE, type: CHANGE_MODE, payload: Mode.INSERT}))
+        expect(ModeReducer(InitState, {kind: Kind.MODE, type: CHANGE_MODE, payload: Mode.INSERT}))
             .toEqual({...InitState, mode: Mode.INSERT});
     });
 
@@ -20,7 +20,7 @@ describe('ModeReducer test', (): void => {
             current: 1
         };
         const CurrentState: State = ModeReducer(InitState, {
-            kind: KIND.MODE,
+            kind: Kind.MODE,
             type: ADD_INSERT,
             payload: Direction.Below
         });
