@@ -5,7 +5,7 @@ import {act} from 'react-dom/test-utils';
 import {TodoListComponent} from "./TodoListComponent";
 import {Todo} from "../../contents";
 import Mode from "../../mode";
-import {getTodoList} from "../../__test__/util";
+import {getTodoList} from "../../__tests__/util";
 
 describe('Test for todo-list-component', (): void => {
     let container: HTMLElement;

@@ -4,7 +4,7 @@ import {InitState, State} from "../../State";
 import {KIND} from "../../Action";
 import {ADD_INSERT, CHANGE_MODE, Direction} from "./types";
 import {Todo} from "../../../contents";
-import {getTodoList} from "../../../__test__/util";
+import {getTodoList} from "../../../__tests__/util";
 
 describe('ModeReducer test', (): void => {
     test('ModeReducer changes mode.', (): void => {

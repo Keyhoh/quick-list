@@ -2,7 +2,7 @@ import Cursor from "./index";
 import Todo from "../Todo";
 import {NoSuchContentsError} from "../Error";
 import {CursorJSON} from "./Cursor";
-import {getTodoList} from "../../__test__/util";
+import {getTodoList} from "../../__tests__/util";
 
 describe('Test for focus', (): void => {
     test('The current-todo is the first todo in todo-list.', (): void => {
