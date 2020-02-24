@@ -2,20 +2,17 @@ import Cursor from "./index";
 import Todo from "../Todo";
 import {NoSuchContentsError} from "../Error";
 import {CursorJSON} from "./Cursor";
+import {getTodoList} from "../../__test__/util";
 
 describe('Test for focus', (): void => {
-    const getTodoArray: Function = (length: number): Todo[] => {
-        return Array.from({length: Math.round(length)}, (_, i: number): Todo => new Todo(`Todo-${i}`));
-    };
-
     test('The current-todo is the first todo in todo-list.', (): void => {
-        const LIST_OF_TODO: Todo[] = getTodoArray(1);
+        const LIST_OF_TODO: Todo[] = getTodoList(1);
         const todoList: Cursor<Todo> = Cursor.of<Todo>(LIST_OF_TODO);
         expect(todoList.current).toBe(0);
     });
 
     test('It is able to get all list.', (): void => {
-        const LIST_OF_TODO: Todo[] = getTodoArray(10);
+        const LIST_OF_TODO: Todo[] = getTodoList(10);
         expect(Cursor.of<Todo>(LIST_OF_TODO).contents).toEqual(LIST_OF_TODO);
     });
 
@@ -26,7 +23,7 @@ describe('Test for focus', (): void => {
 
     test('It is able to get the next todo.', (): void => {
         const LENGTH: number = 10;
-        const LIST_OF_TODO: Todo[] = getTodoArray(LENGTH);
+        const LIST_OF_TODO: Todo[] = getTodoList(LENGTH);
         const todoList: Cursor<Todo> = Cursor.of<Todo>(LIST_OF_TODO);
         for (let i = 0; i < LENGTH - 1; i++) {
             expect(todoList.current).toBe(i);
@@ -45,7 +42,7 @@ describe('Test for focus', (): void => {
 
     test('It is able to get the previous todo.', (): void => {
         const LENGTH: number = 10;
-        const LIST_OF_TODO: Todo[] = getTodoArray(LENGTH);
+        const LIST_OF_TODO: Todo[] = getTodoList(LENGTH);
         const todoList: Cursor<Todo> = Cursor.of<Todo>(LIST_OF_TODO);
         for (let i = 0; i < LENGTH - 1; i++) {
             todoList.next();
@@ -70,7 +67,7 @@ describe('Test for focus', (): void => {
     describe('From-To JSON test', (): void => {
         test('Cursor is able to convert to JSON.', (): void => {
             const LENGTH: number = 10;
-            const LIST_OF_TODO = getTodoArray(LENGTH);
+            const LIST_OF_TODO = getTodoList(LENGTH);
             let cursor: Cursor<Todo> = Cursor.of<Todo>(LIST_OF_TODO);
 
             for (let i = 0; i < LENGTH; i++) {
@@ -83,7 +80,7 @@ describe('Test for focus', (): void => {
 
         test('It is able to get cursor from JSON.', (): void => {
             const LENGTH: number = 10;
-            const LIST_OF_TODO = getTodoArray(LENGTH);
+            const LIST_OF_TODO = getTodoList(LENGTH);
 
             for (let i = 0; i < LENGTH; i++) {
                 let cursor: Cursor<Todo> = Cursor.fromJSON<Todo>({contents: LIST_OF_TODO, current: i});
@@ -94,7 +91,7 @@ describe('Test for focus', (): void => {
 
         test('Throw error if current is out of list.', (): void => {
             const LENGTH: number = 10;
-            const LIST_OF_TODO = getTodoArray(LENGTH);
+            const LIST_OF_TODO = getTodoList(LENGTH);
             expect((): void => void Cursor.fromJSON<Todo>({
                 contents: LIST_OF_TODO,
                 current: NaN,

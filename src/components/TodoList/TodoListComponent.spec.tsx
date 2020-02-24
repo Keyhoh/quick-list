@@ -5,12 +5,9 @@ import {act} from 'react-dom/test-utils';
 import {TodoListComponent} from "./TodoListComponent";
 import {Todo} from "../../contents";
 import Mode from "../../mode";
+import {getTodoList} from "../../__test__/util";
 
 describe('Test for todo-list-component', (): void => {
-    const getTodoList: Function = (length: number): Todo[] => {
-        return Array.from({length: Math.round(length)}, (_, i: number): Todo => new Todo(`Todo-${i}`));
-    };
-
     let container: HTMLElement;
 
     beforeEach((): void => {

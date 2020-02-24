@@ -4,12 +4,9 @@ import {InitState, State} from "../../State";
 import {KIND} from "../../Action";
 import {ADD_INSERT, CHANGE_MODE, Direction} from "./types";
 import {Todo} from "../../../contents";
+import {getTodoList} from "../../../__test__/util";
 
 describe('ModeReducer test', (): void => {
-    const getTodoList: Function = (length: number): Todo[] => {
-        return Array.from({length: Math.round(length)}, (_, i: number): Todo => new Todo(`Todo-${i}`));
-    };
-
     test('ModeReducer changes mode.', (): void => {
         expect(ModeReducer(InitState, {kind: KIND.MODE, type: CHANGE_MODE, payload: Mode.INSERT}))
             .toEqual({...InitState, mode: Mode.INSERT});
