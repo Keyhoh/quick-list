@@ -27,8 +27,8 @@ export class TodoListComponent extends React.Component<Props> {
     }
 
     render(): React.ReactElement {
-        return <div>
+        return <ul className={'todo-list'}>
             {this.mountTodoComponent()}
-        </div>
+        </ul>
     }
 }
