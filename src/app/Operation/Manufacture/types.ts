@@ -4,7 +4,7 @@ export const ADD_TODO = 'ADD_TODO';
 export const REMOVE_TODO = 'REMOVE_TODO';
 
 interface IBaseAction<T> extends IAction<T> {
-    kind: KIND.OPERATION,
+    kind: KIND.MANUFACTURE,
 }
 
 interface AddTodoAction extends IBaseAction<typeof ADD_TODO> {

@@ -21,7 +21,7 @@ describe('Test for todo-list-component', (): void => {
         );
         const TODO_LIST_COMPONENT: ChildNode | null = container.firstChild;
 
-        if (TODO_LIST_COMPONENT === null) throw new Error('Test failed.');
+        if (TODO_LIST_COMPONENT === null) fail(new Error('TodoListComponent does not have any childNodes.'));
 
         expect(TODO_LIST_COMPONENT.childNodes.length).toBe(list.length);
         TODO_LIST_COMPONENT.childNodes.forEach((todoComponent: ChildNode, i: number) => {

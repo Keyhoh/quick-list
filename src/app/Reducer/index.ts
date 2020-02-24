@@ -10,7 +10,7 @@ export default function (state: State = InitState, action: IAction): State {
             return ModeReducer(state, action as ModeActionTypes);
         case KIND.MOVE:
             return MoveReducer(state, action as MoveActionTypes);
-        case KIND.OPERATION:
+        case KIND.MANUFACTURE:
             return ManufactureReducer(state, action as ManufactureActionTypes);
     }
     return InitState;

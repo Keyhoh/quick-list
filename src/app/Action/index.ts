@@ -3,7 +3,7 @@ import {Action} from 'redux';
 export enum KIND {
     MODE,
     MOVE,
-    OPERATION,
+    MANUFACTURE,
 }
 
 export interface IAction<T = any> extends Action<T> {

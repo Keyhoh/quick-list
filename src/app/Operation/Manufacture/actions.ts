@@ -3,7 +3,7 @@ import {KIND} from "../../Action";
 
 export function addTodo(s: string): ManufactureActionTypes {
     return {
-        kind: KIND.OPERATION,
+        kind: KIND.MANUFACTURE,
         type: ADD_TODO,
         payload: s,
     }
@@ -11,7 +11,7 @@ export function addTodo(s: string): ManufactureActionTypes {
 
 export function removeTodo(): ManufactureActionTypes {
     return {
-        kind: KIND.OPERATION,
+        kind: KIND.MANUFACTURE,
         type: REMOVE_TODO,
     }
 }

@@ -12,7 +12,7 @@ describe('ModeReducer test', (): void => {
             .toEqual({...InitState, mode: Mode.INSERT});
     });
 
-    test('ModeReducer add todo and change to insert mode.', (): void => {
+    test('ModeReducer adds todo and changes to insert mode.', (): void => {
         const TODO_LIST: Todo[] = getTodoList(3);
         const InitState: State = {
             mode: Mode.NORMAL,
