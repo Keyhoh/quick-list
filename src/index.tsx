@@ -8,7 +8,7 @@ import {App, store} from "./app";
 import {addTodo, removeTodo} from "./app/Operation/Manufacture";
 import {down, up} from "./app/Operation/Move";
 import Mode from "./mode";
-import {changeMode} from "./app/Operation/Mode";
+import {addInsert, changeMode, Direction} from "./app/Operation/Mode";
 
 const ROOT: HTMLElement | null = document.getElementById('root');
 
@@ -22,6 +22,12 @@ if (ROOT != null) {
                         store.dispatch(changeMode(Mode.INSERT));
                         break;
                     case 'o':
+                        store.dispatch(addInsert(Direction.Below));
+                        break;
+                    case 'O':
+                        store.dispatch(addInsert(Direction.Above));
+                        break;
+                    case 'p':
                         store.dispatch(addTodo(e.key));
                         break;
                     case 'D':
