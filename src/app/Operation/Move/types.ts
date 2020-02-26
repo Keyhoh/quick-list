@@ -1,10 +1,10 @@
-import {IAction, KIND} from "../../Action";
+import {IAction, Kind} from "../../Action";
 
 export const UP: string = 'UP';
 export const DOWN: string = 'DOWN';
 
 interface IBaseAction<T> extends IAction<T> {
-    kind: KIND.MOVE,
+    kind: Kind.MOVE,
 }
 
 interface MoveUpAction extends IBaseAction<typeof UP> {

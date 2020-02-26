@@ -5,12 +5,11 @@ import {act} from 'react-dom/test-utils';
 import {TodoListComponent} from "./TodoListComponent";
 import {Todo} from "../../contents";
 import Mode from "../../mode";
+import {getTodoList} from "../../__tests__/util";
+
+jest.mock("../../app");
 
 describe('Test for todo-list-component', (): void => {
-    const getTodoList: Function = (length: number): Todo[] => {
-        return Array.from({length: Math.round(length)}, (_, i: number): Todo => new Todo(`Todo-${i}`));
-    };
-
     let container: HTMLElement;
 
     beforeEach((): void => {
@@ -24,7 +23,7 @@ describe('Test for todo-list-component', (): void => {
         );
         const TODO_LIST_COMPONENT: ChildNode | null = container.firstChild;
 
-        if (TODO_LIST_COMPONENT === null) throw new Error('Test failed.');
+        if (TODO_LIST_COMPONENT === null) fail(new Error('TodoListComponent does not have any childNodes.'));
 
         expect(TODO_LIST_COMPONENT.childNodes.length).toBe(list.length);
         TODO_LIST_COMPONENT.childNodes.forEach((todoComponent: ChildNode, i: number) => {

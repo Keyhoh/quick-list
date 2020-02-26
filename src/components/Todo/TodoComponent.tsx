@@ -1,11 +1,11 @@
 import React from 'react';
 
-import "./style.scss";
-
 import {Todo} from "../../contents";
 import Mode from "../../mode";
 import ParagraphComponent from "./ParagraphComponent";
 import InputComponent from "./InputComponent";
+
+import "./style.scss";
 
 export interface Props {
     mode: Mode,
@@ -32,6 +32,6 @@ export class TodoComponent extends React.Component<Props> {
     }
 
     render(): React.ReactElement {
-        return <div className={this.className}>{this.row}</div>
+        return <li className={this.className}>{this.row}</li>
     }
 }

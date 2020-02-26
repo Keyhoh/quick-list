@@ -1,14 +1,17 @@
 import {DOWN, MoveActionTypes, UP} from "./types";
 import {Cursor, Todo} from "../../../contents";
+import {State} from "../../State";
 
-export const MoveReducer = (cursor: Cursor<Todo>, action: MoveActionTypes): Cursor<Todo> => {
+export const MoveReducer = (state: State, action: MoveActionTypes): State => {
+    let cursor = Cursor.fromJSON<Todo>(state);
+
     switch (action.type) {
         case UP:
             cursor.prev();
-            return cursor;
+            return {...state, ...cursor.toJSON()};
         case DOWN:
             cursor.next();
-            return cursor;
+            return {...state, ...cursor.toJSON()};
     }
-    return cursor;
+    return state;
 };
