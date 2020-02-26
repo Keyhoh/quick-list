@@ -1,4 +1,6 @@
 import React from "react";
+import {store} from "../../app";
+import {updateTodo} from "../../app/Operation/Manufacture";
 
 interface Props {
     value: string,
@@ -13,6 +15,11 @@ export default class InputComponent extends React.Component <Props> {
 
     componentDidMount(): void {
         this.input?.focus();
+        this.input?.select();
+    }
+
+    componentWillUnmount(): void {
+        this.input?.value && store.dispatch(updateTodo(this.input.value));
     }
 
     render(): React.ReactElement {

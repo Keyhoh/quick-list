@@ -5,6 +5,8 @@ import Mode from "../../mode";
 import ParagraphComponent from "./ParagraphComponent";
 import InputComponent from "./InputComponent";
 
+import "./style.scss";
+
 export interface Props {
     mode: Mode,
     todo: Todo,

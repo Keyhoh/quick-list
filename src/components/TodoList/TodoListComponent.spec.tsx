@@ -7,6 +7,8 @@ import {Todo} from "../../contents";
 import Mode from "../../mode";
 import {getTodoList} from "../../__tests__/util";
 
+jest.mock("../../app");
+
 describe('Test for todo-list-component', (): void => {
     let container: HTMLElement;
 
