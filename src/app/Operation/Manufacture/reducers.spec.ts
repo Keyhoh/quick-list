@@ -1,4 +1,4 @@
-import {ManufactureReducer} from "./reducers";
+import {manufactureReducer} from "./reducers";
 import {InitState, State} from "../../State";
 import {Kind} from "../../Action";
 import {ADD_TODO, REMOVE_TODO, UPDATE_TODO} from "./types";
@@ -8,7 +8,7 @@ import {Todo} from "../../../contents";
 
 describe('ManufactureReducer test', (): void => {
     test('ManufactureReducer adds todo.', (): void => {
-        const CurrentState: State = ManufactureReducer(
+        const CurrentState: State = manufactureReducer(
             InitState,
             {kind: Kind.MANUFACTURE, type: ADD_TODO, payload: 'AddTodo action'}
         );
@@ -23,7 +23,7 @@ describe('ManufactureReducer test', (): void => {
             contents: getTodoList(10),
             current: 5,
         };
-        const CurrentState: State = ManufactureReducer(
+        const CurrentState: State = manufactureReducer(
             InitState,
             {kind: Kind.MANUFACTURE, type: REMOVE_TODO}
         );
@@ -40,7 +40,7 @@ describe('ManufactureReducer test', (): void => {
             contents: getTodoList(10),
             current: CURRENT,
         };
-        const CurrentState: State = ManufactureReducer(
+        const CurrentState: State = manufactureReducer(
             InitState,
             {kind: Kind.MANUFACTURE, type: UPDATE_TODO, payload: NAME}
         );
@@ -58,27 +58,27 @@ describe('ManufactureReducer test', (): void => {
             current: 5,
         };
 
-        expect((): void => void ManufactureReducer(
+        expect((): void => void manufactureReducer(
             InitState,
             {kind: Kind.MANUFACTURE, type: UPDATE_TODO, payload: ''}
         )).not.toThrow();
 
-        expect(ManufactureReducer(InitState, {kind: Kind.MANUFACTURE, type: UPDATE_TODO, payload: ''}))
+        expect(manufactureReducer(InitState, {kind: Kind.MANUFACTURE, type: UPDATE_TODO, payload: ''}))
             .toEqual(InitState);
 
-        expect((): void => void ManufactureReducer(
+        expect((): void => void manufactureReducer(
             InitState,
             {kind: Kind.MANUFACTURE, type: UPDATE_TODO, payload: 'a'.repeat(64)}
         )).not.toThrow();
 
-        expect(ManufactureReducer(
+        expect(manufactureReducer(
             InitState,
             {kind: Kind.MANUFACTURE, type: UPDATE_TODO, payload: 'a'.repeat(64)}
         )).toEqual(InitState);
     });
 
     test('ManufactureReducer throws error if update todo in empty todo-list.', (): void => {
-        expect((): void => void ManufactureReducer(
+        expect((): void => void manufactureReducer(
             InitState,
             {kind: Kind.MANUFACTURE, type: UPDATE_TODO, payload: 'update todo in empty list'}
         )).toThrowError();

@@ -9,8 +9,8 @@ export default class Name {
     }
 
     private static validate(value: string): void {
-        const length = value.length;
-        if (length == 0) throw new EmptyNameError();
+        const length = value?.length ?? 0;
+        if (length === 0) throw new EmptyNameError();
         // Googleの検索結果の表示が30字前後なので、これに合わせる。
         if (length > 32) throw new TooLongNameError();
     }

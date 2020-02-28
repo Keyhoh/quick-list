@@ -26,7 +26,7 @@ const updateTodo: Function = (state: State, name: string): State => {
     return {...state, ...cursor.update(contents)};
 };
 
-export const ManufactureReducer = (state: State, action: ManufactureActionTypes): State => {
+export const manufactureReducer = (state: State, action: ManufactureActionTypes): State => {
     switch (action.type) {
         case ADD_TODO:
             return addTodo(state, action.payload);

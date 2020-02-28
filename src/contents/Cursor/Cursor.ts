@@ -11,8 +11,8 @@ export default class Cursor<T> {
 
     private constructor(contents: T[], current: number = 0) {
         if (isNaN(current)) throw new NoSuchContentsError();
-        this._contents = contents;
-        if (contents.length === 0) {
+        this._contents = contents ?? [];
+        if (this._contents.length === 0) {
             this._current = -1;
         } else {
             this._current = [0, current, contents.length - 1].sort((a: number, b: number): number => a - b)[1];
