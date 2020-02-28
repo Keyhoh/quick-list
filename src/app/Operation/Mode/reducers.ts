@@ -7,7 +7,7 @@ const go: Function = (current: number, d: Direction): number => {
     return current + Number(d === Direction.Below);
 };
 
-export const ModeReducer = (state: State, action: ModeActionTypes): State => {
+export const modeReducer = (state: State, action: ModeActionTypes): State => {
     switch (action.type) {
         case CHANGE_MODE:
             return {...state, mode: action.payload};

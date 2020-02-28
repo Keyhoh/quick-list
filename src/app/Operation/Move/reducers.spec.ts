@@ -1,7 +1,7 @@
 import {State} from "../../State";
 import Mode from "../../../mode";
 import {getTodoList} from "../../../__tests__/util";
-import {MoveReducer} from "./reducers";
+import {moveReducer} from "./reducers";
 import {Kind} from "../../Action";
 import {DOWN, UP} from "./types";
 import {Todo} from "../../../contents";
@@ -15,7 +15,7 @@ describe('MoveReducer test', (): void => {
     };
 
     test('MoveReducer move down current todo.', (): void => {
-        expect(MoveReducer(InitState, {kind: Kind.MOVE, type: DOWN}))
+        expect(moveReducer(InitState, {kind: Kind.MOVE, type: DOWN}))
             .toEqual({
                 mode: Mode.NORMAL,
                 contents: CONTENTS,
@@ -23,7 +23,7 @@ describe('MoveReducer test', (): void => {
             });
     });
     test('MoveReducer move down current todo.', (): void => {
-        expect(MoveReducer(InitState, {kind: Kind.MOVE, type: UP}))
+        expect(moveReducer(InitState, {kind: Kind.MOVE, type: UP}))
             .toEqual({
                 mode: Mode.NORMAL,
                 contents: CONTENTS,

@@ -1,17 +1,17 @@
 import {InitState, State} from "../State";
 import {Kind} from "../Action";
-import {ManufactureActionTypes, ManufactureReducer} from "../Operation/Manufacture";
-import {MoveActionTypes, MoveReducer} from "../Operation/Move";
-import {ModeActionTypes, ModeReducer} from "../Operation/Mode";
+import {ManufactureActionTypes, manufactureReducer} from "../Operation/Manufacture";
+import {MoveActionTypes, moveReducer} from "../Operation/Move";
+import {ModeActionTypes, modeReducer} from "../Operation/Mode";
 
 export default function (state: State = InitState, action: ModeActionTypes | MoveActionTypes | ManufactureActionTypes): State {
     switch (action.kind) {
         case Kind.MODE:
-            return ModeReducer(state, action);
+            return modeReducer(state, action);
         case Kind.MOVE:
-            return MoveReducer(state, action);
+            return moveReducer(state, action);
         case Kind.MANUFACTURE:
-            return ManufactureReducer(state, action);
+            return manufactureReducer(state, action);
     }
     return InitState;
 };
