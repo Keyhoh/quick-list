@@ -1,7 +1,7 @@
 import {manufactureReducer} from "./reducers";
 import {InitState, State} from "../../State";
 import {Kind} from "../../Action";
-import {ADD_TODO, REMOVE_TODO, UPDATE_TODO} from "./types";
+import {ADD_TODO, REMOVE_ALL, UPDATE_TODO} from "./types";
 import Mode from "../../../mode";
 import {getTodoList} from "../../../__tests__/util";
 import {Todo} from "../../../contents";
@@ -25,7 +25,7 @@ describe('ManufactureReducer test', (): void => {
         };
         const CurrentState: State = manufactureReducer(
             InitState,
-            {kind: Kind.MANUFACTURE, type: REMOVE_TODO}
+            {kind: Kind.MANUFACTURE, type: REMOVE_ALL}
         );
         expect(CurrentState.mode).toEqual(Mode.NORMAL);
         expect(CurrentState.contents).toEqual([]);

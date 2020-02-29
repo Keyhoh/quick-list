@@ -1,4 +1,4 @@
-import {ADD_TODO, ManufactureActionTypes, REMOVE_TODO, UPDATE_TODO} from "./types";
+import {ADD_TODO, ManufactureActionTypes, REMOVE_ALL, UPDATE_TODO} from "./types";
 import {Cursor, Todo} from "../../../contents";
 import {State} from "../../State";
 import {EmptyNameError, TooLongNameError} from "../../../contents/Error";
@@ -30,7 +30,7 @@ export const manufactureReducer = (state: State, action: ManufactureActionTypes)
     switch (action.type) {
         case ADD_TODO:
             return addTodo(state, action.payload);
-        case REMOVE_TODO:
+        case REMOVE_ALL:
             return {...state, ...Cursor.of<Todo>([]).toJSON()};
         case UPDATE_TODO:
             return updateTodo(state, action.payload);
