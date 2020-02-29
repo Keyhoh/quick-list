@@ -1,2 +1,2 @@
-export {TodoListComponent as AppComponent} from "./TodoList";
+export {TodoListComponent} from "./TodoList";
 export {Props as AppProps} from "./TodoList";

@@ -14,7 +14,7 @@ export const modeReducer = (state: State, action: ModeActionTypes): State => {
         case ADD_INSERT:
             let contents: Todo[] = [...state.contents];
             const CURRENT = go(state.current, action.payload);
-            contents.splice(CURRENT, 0, new Todo('Maximum characters length is 32.'));
+            contents.splice(CURRENT, 0, new Todo('入力可能な最大文字数は３２文字です。'));
             return {mode: Mode.INSERT, current: CURRENT, contents: [...contents]};
     }
     return state;

@@ -10,10 +10,8 @@ import {down, up} from "./app/Operation/Move";
 import Mode from "./mode";
 import {addInsert, changeMode, Direction} from "./app/Operation/Mode";
 
-const ROOT: HTMLElement | null = document.getElementById('root');
-
-if (ROOT != null) {
-    ReactDOM.render(<Provider store={store}><App /></Provider>, ROOT);
+if (document.body != null) {
+    ReactDOM.render(<div><Provider store={store}><App /></Provider></div>, document.body);
     window.addEventListener('keydown', (e: KeyboardEvent): void => {
         switch (store.getState().mode) {
             case Mode.NORMAL:
@@ -46,7 +44,7 @@ if (ROOT != null) {
                 break;
 
             case Mode.INSERT:
-                if (e.ctrlKey && e.key === '[' || e.key === 'Escape') store.dispatch(changeMode(Mode.NORMAL));
+                if (e.ctrlKey && e.key === '[' || e.key === 'Escape' || e.key === 'Enter') store.dispatch(changeMode(Mode.NORMAL));
                 break;
         }
     });

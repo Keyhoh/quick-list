@@ -26,6 +26,7 @@ export default class InputComponent extends React.Component <Props> {
         return <input
             ref={(input: HTMLInputElement): void => void (this.input = input)}
             defaultValue={this.props.value}
+            maxLength={32}
         />;
     }
 }
