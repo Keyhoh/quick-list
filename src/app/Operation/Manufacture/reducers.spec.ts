@@ -1,20 +1,27 @@
 import {manufactureReducer} from "./reducers";
 import {InitState, State} from "../../State";
 import {Kind} from "../../Action";
-import {ADD_TODO, REMOVE_TODO, UPDATE_TODO} from "./types";
+import {REMOVE_ALL, REMOVE_TODO, UPDATE_TODO} from "./types";
 import Mode from "../../../mode";
 import {getTodoList} from "../../../__tests__/util";
 import {Todo} from "../../../contents";
 
 describe('ManufactureReducer test', (): void => {
-    test('ManufactureReducer adds todo.', (): void => {
+    test('ManufactureReducer removes todo.', (): void => {
+        const CONTENTS: Todo[] = getTodoList(10);
+        const InitState: State = {
+            mode: Mode.NORMAL,
+            contents: CONTENTS,
+            current: 4,
+        };
         const CurrentState: State = manufactureReducer(
             InitState,
-            {kind: Kind.MANUFACTURE, type: ADD_TODO, payload: 'AddTodo action'}
+            {kind: Kind.MANUFACTURE, type: REMOVE_TODO}
         );
         expect(CurrentState.mode).toEqual(Mode.NORMAL);
-        expect(CurrentState.contents.length).toBe(1);
-        expect(CurrentState.current).toBe(0);
+        expect(CurrentState.contents.length).toBe(9);
+        expect(CurrentState.current).toBe(4);
+        expect(CurrentState.contents).toEqual(CONTENTS.filter((_: Todo, i: number) => i !== 4));
     });
 
     test('ManufactureReducer remove all todo.', (): void => {
@@ -25,7 +32,7 @@ describe('ManufactureReducer test', (): void => {
         };
         const CurrentState: State = manufactureReducer(
             InitState,
-            {kind: Kind.MANUFACTURE, type: REMOVE_TODO}
+            {kind: Kind.MANUFACTURE, type: REMOVE_ALL}
         );
         expect(CurrentState.mode).toEqual(Mode.NORMAL);
         expect(CurrentState.contents).toEqual([]);

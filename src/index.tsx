@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import "./style.scss";
 
 import {App, store} from "./app";
-import {addTodo, removeTodo} from "./app/Operation/Manufacture";
+import {removeAll, removeTodo} from "./app/Operation/Manufacture";
 import {down, up} from "./app/Operation/Move";
 import Mode from "./mode";
 import {addInsert, changeMode, Direction} from "./app/Operation/Mode";
@@ -18,7 +18,7 @@ if (ROOT != null) {
         switch (store.getState().mode) {
             case Mode.NORMAL:
                 switch (e.key) {
-                    case 'i':
+                    case 'c':
                         store.dispatch(changeMode(Mode.INSERT));
                         break;
                     case 'o':
@@ -27,11 +27,11 @@ if (ROOT != null) {
                     case 'O':
                         store.dispatch(addInsert(Direction.Above));
                         break;
-                    case 'p':
-                        store.dispatch(addTodo(e.key));
+                    case 'd':
+                        store.dispatch(removeTodo());
                         break;
                     case 'D':
-                        store.dispatch(removeTodo());
+                        store.dispatch(removeAll());
                         break;
                     case 'j':
                         store.dispatch(down());
