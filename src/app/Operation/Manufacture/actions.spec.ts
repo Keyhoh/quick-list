@@ -1,4 +1,4 @@
-import {ADD_TODO, addTodo, REMOVE_TODO, removeTodo, UPDATE_TODO, updateTodo} from "./index";
+import {ADD_TODO, addTodo, REMOVE_TODO, removeAll, UPDATE_TODO, updateTodo} from "./index";
 import {InitState, State} from "../../State";
 
 import configureStore, {MockStoreCreator, MockStoreEnhanced} from 'redux-mock-store';
@@ -18,7 +18,7 @@ describe('Test for App', (): void => {
     });
 
     test('It is called REMOVE_TODO action.', (): void => {
-        store.dispatch(removeTodo());
+        store.dispatch(removeAll());
         expect(store.getActions()).toEqual([{kind: Kind.MANUFACTURE, type: REMOVE_TODO}]);
     });
 

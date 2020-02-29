@@ -9,7 +9,7 @@ export function addTodo(s: string): ManufactureActionTypes {
     }
 }
 
-export function removeTodo(): ManufactureActionTypes {
+export function removeAll(): ManufactureActionTypes {
     return {
         kind: Kind.MANUFACTURE,
         type: REMOVE_TODO,
