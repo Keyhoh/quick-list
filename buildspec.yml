@@ -9,4 +9,6 @@ phases:
       - npm run build
 artifacts:
   files:
-    - ./dist/*
+    - index.html
+    - index.js
+  base-directory: 'dist'
