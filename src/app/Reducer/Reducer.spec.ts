@@ -1,6 +1,6 @@
 import reducer from "./index";
 import {Kind} from "../Action";
-import {ADD_TODO, manufactureReducer, REMOVE_ALL} from "../Operation/Manufacture";
+import {manufactureReducer, REMOVE_ALL, REMOVE_TODO} from "../Operation/Manufacture";
 import {CHANGE_MODE, ModeActionTypes, modeReducer} from "../Operation/Mode";
 import Mode from "../../mode";
 import {DOWN, moveReducer, UP} from "../Operation/Move";
@@ -12,7 +12,7 @@ jest.mock("../Operation/Mode");
 
 describe('Reducer test', (): void => {
     test('Reducer calls manufacture-reducer.', (): void => {
-        reducer(InitState, {kind: Kind.MANUFACTURE, type: ADD_TODO, payload: 'add todo'});
+        reducer(InitState, {kind: Kind.MANUFACTURE, type: REMOVE_TODO, payload: 'add todo'});
         reducer(InitState, {kind: Kind.MANUFACTURE, type: REMOVE_ALL});
         expect(manufactureReducer).toBeCalledTimes(2);
     });

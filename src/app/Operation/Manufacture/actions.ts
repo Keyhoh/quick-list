@@ -1,11 +1,10 @@
-import {ADD_TODO, ManufactureActionTypes, REMOVE_ALL, UPDATE_TODO} from "./types";
+import {ManufactureActionTypes, REMOVE_ALL, REMOVE_TODO, UPDATE_TODO} from "./types";
 import {Kind} from "../../Action";
 
-export function addTodo(s: string): ManufactureActionTypes {
+export function removeTodo(): ManufactureActionTypes {
     return {
         kind: Kind.MANUFACTURE,
-        type: ADD_TODO,
-        payload: s,
+        type: REMOVE_TODO,
     }
 }
 
