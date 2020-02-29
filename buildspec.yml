@@ -2,7 +2,8 @@ version: 0.2
 
 phases:
   install:
-    - npm i
+    commands:
+      - npm i
   build:
     commands:
       - npm build
