@@ -1,0 +1,11 @@
+version: 0.2
+
+phases:
+  install:
+    - npm i
+  build:
+    commands:
+      - npm build
+artifacts:
+  files:
+    - ./dist/*
