@@ -6,7 +6,7 @@ phases:
       - npm i
   build:
     commands:
-      - npm build
+      - npm run build
 artifacts:
   files:
     - ./dist/*
