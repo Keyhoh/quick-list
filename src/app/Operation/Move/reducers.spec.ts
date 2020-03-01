@@ -3,7 +3,7 @@ import Mode from "../../../mode";
 import {getTodoList} from "../../../__tests__/util";
 import {moveReducer} from "./reducers";
 import {Kind} from "../../Action";
-import {BOTTOM, DOWN, UP} from "./types";
+import {BOTTOM, DOWN, TOP, UP} from "./types";
 import {Todo} from "../../../contents";
 
 describe('MoveReducer test', (): void => {
@@ -33,12 +33,21 @@ describe('MoveReducer test', (): void => {
             });
     });
 
-    test('MoveReducer move to bottom.', (): void => {
+    test('MoveReducer moves to bottom.', (): void => {
         expect(moveReducer(InitState, {kind: Kind.MOVE, type: BOTTOM}))
             .toEqual({
                 mode: Mode.NORMAL,
                 contents: CONTENTS,
                 current: LEN - 1,
+            });
+    });
+
+    test('MoveReducer moves to top.', (): void => {
+        expect(moveReducer(InitState, {kind: Kind.MOVE, type: TOP}))
+            .toEqual({
+                mode: Mode.NORMAL,
+                contents: CONTENTS,
+                current: 0,
             });
     });
 });
