@@ -1,4 +1,4 @@
-import {DOWN, MoveActionTypes, UP} from "./types";
+import {BOTTOM, DOWN, MoveActionTypes, UP} from "./types";
 import {Cursor, Todo} from "../../../contents";
 import {State} from "../../State";
 
@@ -11,6 +11,9 @@ export const moveReducer = (state: State, action: MoveActionTypes): State => {
             return {...state, ...cursor.toJSON()};
         case DOWN:
             cursor.next();
+            return {...state, ...cursor.toJSON()};
+        case BOTTOM:
+            cursor.go(-1);
             return {...state, ...cursor.toJSON()};
     }
     return state;

@@ -64,6 +64,36 @@ describe('Test for focus', (): void => {
         });
     });
 
+    describe('It is able to go to designated position.', (): void => {
+        test('Goto positive index.', (): void => {
+            const LENGTH: number = 10;
+            const LIST_OF_TODO: Todo[] = getTodoList(LENGTH);
+            for (let i = 0; i < LENGTH - 1; i++) {
+                const todoList: Cursor<Todo> = Cursor.of<Todo>(LIST_OF_TODO);
+                expect(todoList.go(i)).toBeUndefined();
+                expect(todoList.current).toBe(i);
+            }
+        });
+
+        test('Goto negative index.', (): void => {
+            const LENGTH: number = 10;
+            const LIST_OF_TODO: Todo[] = getTodoList(LENGTH);
+            for (let i = 1; i <= LENGTH; i++) {
+                const todoList: Cursor<Todo> = Cursor.of<Todo>(LIST_OF_TODO);
+                expect(todoList.go(-i)).toBeUndefined();
+                expect(todoList.current).toBe(LENGTH - i);
+            }
+        });
+
+        test('Throw NoSuchException by designating out of bounds.', (): void => {
+            const LENGTH: number = 10;
+            const LIST_OF_TODO: Todo[] = getTodoList(LENGTH);
+            const todoList: Cursor<Todo> = Cursor.of<Todo>(LIST_OF_TODO);
+            expect((): void => todoList.go(LENGTH)).toThrow(NoSuchContentsError);
+            expect((): void => todoList.go(-LENGTH - 1)).toThrow(NoSuchContentsError);
+        });
+    });
+
     describe('From-To JSON test', (): void => {
         test('Cursor is able to convert to JSON.', (): void => {
             const LENGTH: number = 10;
