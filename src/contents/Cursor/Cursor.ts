@@ -49,7 +49,6 @@ export default class Cursor<T> {
     go(p: number): void {
         if (isNaN(p)) throw  new NoSuchContentsError();
         const DEST: number = p + (p < 0 ? this._contents.length : 0);
-        console.log(DEST);
         if (!this.hasContent(DEST)) throw new NoSuchContentsError();
         this._current = DEST;
     }

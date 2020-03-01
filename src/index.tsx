@@ -6,7 +6,7 @@ import "./style.scss";
 
 import {App, store} from "./app";
 import {removeAll, removeTodo} from "./app/Operation/Manufacture";
-import {down, up} from "./app/Operation/Move";
+import {down, gotoBottom, gotoTop, up} from "./app/Operation/Move";
 import Mode from "./mode";
 import {addInsert, changeMode, Direction} from "./app/Operation/Mode";
 
@@ -36,6 +36,12 @@ if (document.body != null) {
                         break;
                     case 'k':
                         store.dispatch(up());
+                        break;
+                    case 'g':
+                        store.dispatch(gotoTop());
+                        break;
+                    case 'G':
+                        store.dispatch(gotoBottom());
                         break;
                     default:
                         return;
