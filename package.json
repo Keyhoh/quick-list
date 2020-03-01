@@ -1,6 +1,6 @@
 {
   "name": "quick-list",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "キーボード操作で完結するtodoリスト",
   "engines": {
     "node": ">=12.14.0",

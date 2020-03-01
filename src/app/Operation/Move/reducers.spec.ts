@@ -3,18 +3,19 @@ import Mode from "../../../mode";
 import {getTodoList} from "../../../__tests__/util";
 import {moveReducer} from "./reducers";
 import {Kind} from "../../Action";
-import {DOWN, UP} from "./types";
+import {BOTTOM, DOWN, TOP, UP} from "./types";
 import {Todo} from "../../../contents";
 
 describe('MoveReducer test', (): void => {
-    const CONTENTS: Todo[] = getTodoList(10);
+    const LEN: number = 10;
+    const CONTENTS: Todo[] = getTodoList(LEN);
     const InitState: State = {
         mode: Mode.NORMAL,
         contents: CONTENTS,
         current: 5,
     };
 
-    test('MoveReducer move down current todo.', (): void => {
+    test('MoveReducer moves down focus.', (): void => {
         expect(moveReducer(InitState, {kind: Kind.MOVE, type: DOWN}))
             .toEqual({
                 mode: Mode.NORMAL,
@@ -22,12 +23,31 @@ describe('MoveReducer test', (): void => {
                 current: 6,
             });
     });
-    test('MoveReducer move down current todo.', (): void => {
+
+    test('MoveReducer moves up focus.', (): void => {
         expect(moveReducer(InitState, {kind: Kind.MOVE, type: UP}))
             .toEqual({
                 mode: Mode.NORMAL,
                 contents: CONTENTS,
                 current: 4,
+            });
+    });
+
+    test('MoveReducer moves to bottom.', (): void => {
+        expect(moveReducer(InitState, {kind: Kind.MOVE, type: BOTTOM}))
+            .toEqual({
+                mode: Mode.NORMAL,
+                contents: CONTENTS,
+                current: LEN - 1,
+            });
+    });
+
+    test('MoveReducer moves to top.', (): void => {
+        expect(moveReducer(InitState, {kind: Kind.MOVE, type: TOP}))
+            .toEqual({
+                mode: Mode.NORMAL,
+                contents: CONTENTS,
+                current: 0,
             });
     });
 });

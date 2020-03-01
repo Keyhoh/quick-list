@@ -1,4 +1,4 @@
-import {DOWN, down, UP, up} from "./index";
+import {BOTTOM, DOWN, down, gotoBottom, gotoTop, TOP, UP, up} from "./index";
 import {State} from "../../State";
 import {getTodoList} from "../../../__tests__/util";
 import Mode from "../../../mode";
@@ -24,9 +24,13 @@ describe('Test for App', (): void => {
     test('It is called UP and DOWN action.', (): void => {
         store.dispatch(up());
         store.dispatch(down());
+        store.dispatch(gotoTop());
+        store.dispatch(gotoBottom());
         expect(store.getActions()).toEqual([
             {kind: Kind.MOVE, type: UP},
             {kind: Kind.MOVE, type: DOWN},
+            {kind: Kind.MOVE, type: TOP},
+            {kind: Kind.MOVE, type: BOTTOM},
         ]);
     });
 });
