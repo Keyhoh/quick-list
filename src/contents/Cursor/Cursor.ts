@@ -46,6 +46,13 @@ export default class Cursor<T> {
         this._current--;
     }
 
+    go(p: number): void {
+        if (isNaN(p)) throw  new NoSuchContentsError();
+        const DEST: number = p + (p < 0 ? this._contents.length : 0);
+        if (!this.hasContent(DEST)) throw new NoSuchContentsError();
+        this._current = DEST;
+    }
+
     update(list: T[]): Cursor<T> {
         return Cursor.fromJSON<T>({contents: list, current: this._current});
     }
@@ -57,7 +64,7 @@ export default class Cursor<T> {
         };
     }
 
-    private hasContent(point: number): boolean {
-        return point >= 0 && point < this._contents.length;
+    private hasContent(p: number): boolean {
+        return !isNaN(p) && p >= 0 && p < this._contents.length;
     }
 }
